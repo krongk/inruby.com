@@ -1,0 +1,70 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @contact.name %>
+</p>
+
+<p>
+  <b>Phone:</b>
+  <%= @contact.phone %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @contact.email %>
+</p>
+
+<p>
+  <b>Qq:</b>
+  <%= @contact.qq %>
+</p>
+
+<p>
+  <b>Company:</b>
+  <%= @contact.company %>
+</p>
+
+<p>
+  <b>Address:</b>
+  <%= @contact.address %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @contact.title %>
+</p>
+
+<p>
+  <b>Message:</b>
+  <%= @contact.message %>
+</p>
+
+<p>
+  <b>Cate:</b>
+  <%= @contact.cate %>
+</p>
+
+<p>
+  <b>Note:</b>
+  <%= @contact.note %>
+</p>
+
+<p>
+  <b>Is verfied:</b>
+  <%= @contact.is_verfied %>
+</p>
+
+<p>
+  <b>Verfied by:</b>
+  <%= @contact.verfied_by %>
+</p>
+
+<p>
+  <b>Is deleted:</b>
+  <%= @contact.is_deleted %>
+</p>
+
+
+<%= link_to 'Edit', edit_contact_path(@contact) %> |
+<%= link_to 'Back', contacts_path %>

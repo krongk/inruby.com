@@ -1,0 +1,29 @@
+#encoding: utf-8
+ActiveAdmin.register ResourceItem do
+  menu :parent => "资源中心"
+
+  form :partial => "form"
+
+  member_action :file_upload, :method => :put do 
+  end
+
+  controller do
+      # This code is evaluated within the controller class
+
+      def upload
+	    require 'fileutils'
+		tmp = params[:file_upload][:my_file].tempfile
+		file = File.join("public", params[:file_upload][:my_file].original_filename)
+		FileUtils.cp tmp.path, file
+		#FileUtils.rm fileutils
+      end
+  end
+
+  sidebar :"帮助中心" do
+    ul do
+      li "资源分类包括网站所使用的所有：图片、音频、视频、flsh等！"
+      li "在上传过程中，请一定要认真确认资源相对应的类型，否则前台无法正常显示！"
+    end
+  end
+
+end

@@ -1,0 +1,40 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta http-equiv="Content-Language" content="zh-cn" />
+  <meta name="robots" content="all" />
+  <meta name="author" content="omero" />
+  <meta name="Copyright" content="Omero Lcd, All Rights Reserved." />
+  <title><%= yield(:title)%> </title>
+  <meta name="keywords" content="<%= yield(:meta_keywords)%>" />
+  <meta name="description" content="<%= yield(:meta_description)%>" />
+    
+  <%= stylesheet_link_tag    "application" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+
+  <script type="text/javascript">
+
+  </script>
+
+</head> 
+ 
+<body> 
+ <h1><%=$sites[:site_name]%></h1>
+ 
+ <%=yield %>
+
+ <div class="footer">
+  <p style="line-height:20px; text-align:left;">
+    <a href="#" title="关于我们">关于我们</a> | 
+    <a href="#服务团队">服务团队</a> | 
+    <a href="#" title="联系我们">联系我们</a> | 
+    <a href="#" title="我们优势">我们优势</a><br />
+    Email: <%=$sites[:site_email]%>  Phone: <%=$sites[:site_phone]%><br/>
+    Copyright @ 2008 - 2012 <br/>
+    <%=$sites[:site_name]%>(<%=$sites[:site_domain]%>) All Rights Reserved.  
+    </p>
+ </div>
+</body>
+</html>

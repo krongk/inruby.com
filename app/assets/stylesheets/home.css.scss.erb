@@ -1,0 +1,107 @@
+// Place all the styles related to the home controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+/* body { background: url(<%= asset_path 'bg_blue.png' %>) repeat-x top left fixed;} */
+
+/* #header {
+    background: #4d87c7 url(<%= asset_path('bg_blue.png') %>) repeat-x top left;
+ } */
+
+ /* This css file serves as a template for styling your kwicks.  Feel free to modify, but please make note of the comments - some of them are important. */
+
+/* defaults for all examples */
+.kwicks {
+	list-style: none;
+	position: relative;
+	margin: 0;
+	padding: 0;
+}
+.kwicks li{
+	display: block;
+	overflow: hidden;
+	padding: 0;
+	cursor: pointer;
+}
+
+/* example 1 */
+.kwicks li{
+	float: left;
+	width: 125px;
+	height: 100px;
+	margin-right: 5px;
+}
+
+.main_kwick a{
+	display: block;
+	height: 120px;
+	width: 100px;
+}
+
+#kwick1 { 
+	background-color: #53b388;
+	background-image: url('<%=asset_path("menu_1.gif")%>');
+}
+#kwick2 {
+	background-color: #5a69a9;
+	background-image: url('<%=asset_path("menu_2.gif")%>');
+}
+#kwick3 {
+	background-color: #c26468;
+	background-image: url('<%=asset_path("menu_1.gif")%>');
+}
+#kwick4 { 
+	background-color: #bf7cc7;
+	background-image: url('menu_2.gif');
+	margin-right: none;
+}
+#kwick5 { 
+	background-color: #bf7cc7;
+	background-image: url('menu_1.gif');
+	margin-right: none;
+}
+#kwick6 { 
+	background-color: #bf7cc7;
+	background-image: url('menu_2.gif');
+	margin-right: none;
+}
+#kwick7 { 
+	background-color: #bf7cc7;
+	background-image: url('menu_1.gif');
+	margin-right: none;
+}
+
+
+.sub_kwicks{
+	display: block;
+	position: relative;
+	visibility: visible;
+	width: 100%;
+	margin-top: 80px;
+	list-style-type: none;
+	background-color: #fff;
+	float: left;
+	padding: 8px;
+	height: 35px;
+}
+.sub_kwicks li {
+	display: none;
+	width: 100%;
+	border: 1px solid #666;
+	height: 30px;
+	margin: 0px;
+	padding-top: 10px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+.sub_kwicks li a {
+	font-family: "微软雅黑";
+	font-size: 16px;
+	text-decoration: none;
+	padding: 4px;
+	margin-top: 10px;
+	margin-right: 10px;
+	margin-bottom: 10px;
+	margin-left: 10px;
+}

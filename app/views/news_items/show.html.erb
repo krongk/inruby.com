@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>News cate:</b>
+  <%= @news_item.news_cate %>
+</p>
+
+<p>
+  <b>Title:</b>
+  <%= @news_item.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%= simple_format @news_item.body %>
+</p>
+
+<p>
+  <b>External url:</b>
+  <%= @news_item.external_path %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @news_item.image_path %>
+</p>
+
+
+<%= link_to 'Edit', edit_news_item_path(@news_item) %> |
+<%= link_to 'Back', news_items_path %>

@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Product cate:</b>
+  <%= @product_item.product_cate %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @product_item.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @product_item.description %>
+</p>
+
+<p>
+  <b>Price:</b>
+  <%= @product_item.price %>
+</p>
+
+<p>
+  <b>Image url:</b>
+  <%= @product_item.image_url %>
+</p>
+
+<p>
+  <b>Is visible:</b>
+  <%= @product_item.is_visible %>
+</p>
+
+
+<%= link_to 'Edit', edit_product_item_path(@product_item) %> |
+<%= link_to 'Back', product_items_path %>

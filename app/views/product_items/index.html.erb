@@ -1,0 +1,33 @@
+<h1>Listing product_items</h1>
+
+<table>
+  <tr>
+    <th>Product cate</th>
+    <th>Name</th>
+    <th>Description</th>
+    <th>Price</th>
+    <th>Image url</th>
+    <th>Is visible</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @product_items.each do |product_item| %>
+  <tr>
+    <td><%= product_item.product_cate %></td>
+    <td><%= product_item.name %></td>
+    <td><%= product_item.description %></td>
+    <td><%= product_item.price %></td>
+    <td><%= product_item.image_url %></td>
+    <td><%= product_item.is_visible %></td>
+    <td><%= link_to 'Show', product_item %></td>
+    <td><%= link_to 'Edit', edit_product_item_path(product_item) %></td>
+    <td><%= link_to 'Destroy', product_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Product item', new_product_item_path %>

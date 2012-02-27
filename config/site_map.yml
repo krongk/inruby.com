@@ -1,0 +1,67 @@
+site:
+  site_name: 网站名称
+  site_domain: www.inruby.com
+  site_email: master@inruby.com
+  site_phone: 400-123-800
+  admin_email: admin@inruby.com
+  admin_confirm_email: inruby@gmail.com
+meta:
+  keywords: 互联网咨询团队
+  description: 红宝石企业建站、互联网咨询专家
+menu:
+    about:
+      title: '关于我们'
+      menu_match: 'about‘
+    join:
+      title: 服务项目
+      menu_match: join
+    news:
+      title: 企业动态
+      menu_match: 'news'
+    product:
+      title: 产品中心
+      menu_match: product
+    contact:
+      title: 联系我们
+      menu_match: contact
+    # customer:
+    #   title: 我要洗衣
+    #   menu:
+    #     store_search:
+    #       title: 分店查询
+    #       menu_match: 'store:search'
+    #     store_news:
+    #       title: 最新活动
+    #       menu_match: 'store:news'
+    #     product_knowledge:
+    #       title: 日化产品使用常识
+    #       menu_match: 'customer:product_knowledge'
+    #     laundry_knowledge:
+    #       title: 洗衣常识
+    #       menu_match: 'customer:laundry_knowledge'
+    #     online_order:
+    #       title: 在线洗衣预约
+    #       enu_match: 'customer:online_order'
+    # english:
+    #   title: English
+    #   menu:
+    #     about_us: 
+    #       title: 'About Us'
+    #       menu_match: 'english:about_us'
+    #       show_in_menu: 1
+    #     franchise:
+    #       title: 'Franchise'
+    #       menu_match: 'english:franchise'
+    #       show_in_menu: 1
+    #     consumer:
+    #       title: 'Consumer'
+    #       menu_match: 'english:consumer'
+    #       show_in_menu: 1
+    #     stories:
+    #       title: 'Stories'
+    #       menu_match: 'english:stories'
+    #       show_in_menu: 1
+    #     contact_us:
+    #       title: 'Contact Us'
+    #       menu_match: 'english:contact_us'
+    #       show_in_menu: 1

@@ -1,0 +1,31 @@
+<h1>Listing news_items</h1>
+
+<table>
+  <tr>
+    <th>News cate</th>
+    <th>Title</th>
+    <th>Body</th>
+    <th>External url</th>
+    <th>Image url</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @news_items.each do |news_item| %>
+  <tr>
+    <td><%= news_item.news_cate %></td>
+    <td><%= news_item.title %></td>
+    <td><%= news_item.body.truncate(40) %></td>
+    <td><%= news_item.external_path %></td>
+    <td><%= news_item.image_path %></td>
+    <td><%= link_to 'Show', news_item %></td>
+    <td><%= link_to 'Edit', edit_news_item_path(news_item) %></td>
+    <td><%= link_to 'Destroy', news_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New News item', new_news_item_path %>
