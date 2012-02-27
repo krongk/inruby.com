@@ -1,10 +1,15 @@
-<p id="notice"><%= notice %></p>
+<%= render :partial => 'news_cates/menu' %>
 
-<p>
-  <b>Name:</b>
-  <%= @news_cate.name %>
-</p>
+<div class="list">
+  <h3 class="titlbg"><%=@news_cate.name %></h3>
 
-
-<%= link_to 'Edit', edit_news_cate_path(@news_cate) %> |
-<%= link_to 'Back', news_cates_path %>
+  <ul>
+    <% @news_items.each_with_index do |item, index| %>
+      <li>
+        <h3 class="titbg" ><%=link_to item.title, news_item_path(item)%></h3>
+        <p><%= simple_format item.body.truncate(200)%></p>
+        <p class="ztn"><strong><%=link_to '[阅读详情]↓', news_item_path(item)%></strong> <%=item.updated_at.to_s %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>

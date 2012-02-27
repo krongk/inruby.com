@@ -1,29 +1,46 @@
 site:
-  site_name: 网站名称
+  site_name: 成都红宝石网络
   site_domain: www.inruby.com
   site_email: master@inruby.com
-  site_phone: 400-123-800
+  site_phone: 15928661802
   admin_email: admin@inruby.com
   admin_confirm_email: inruby@gmail.com
 meta:
   keywords: 互联网咨询团队
-  description: 红宝石企业建站、互联网咨询专家
+  description: 红宝石企业建站、红宝石互联网咨询专家、红宝石互联网应用开发
 menu:
+    home:
+      title: 首页
+      menu_match: home
     about:
-      title: '关于我们'
-      menu_match: 'about‘
-    join:
+      title: 关于我们
+      menu_match: about
+    service:
       title: 服务项目
-      menu_match: join
-    news:
-      title: 企业动态
-      menu_match: 'news'
-    product:
-      title: 产品中心
-      menu_match: product
+    case:
+      title: 成功案例
+      menu_match: case
+    team:
+      title: 服务团队
+      menu_match: team
     contact:
       title: 联系我们
       menu_match: contact
+    advantage:
+      title: 服务优势
+      menu_match: advantage
+    friend_link:
+      title: 友情链接
+      menu_match: friend_link
+    copyright:
+      title: 免责声明
+      menu_match: copyright
+    help:
+      title: 帮助中心
+      menu_match: help
+    career:
+      title: 人才招聘
+      menu_match: career
     # customer:
     #   title: 我要洗衣
     #   menu:

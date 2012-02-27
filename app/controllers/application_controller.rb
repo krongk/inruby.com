@@ -2,7 +2,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
   before_filter :locate
-
+  before_filter :init_site_global
+  
   def locate
   	#ip = request.remote_id
   	ip = '118.113.226.34'
@@ -15,19 +16,6 @@ class ApplicationController < ActionController::Base
 	  end
   end
 
- # #global varite
- # {"site_name"=>"欧美龙洗衣连锁", 
- #   "site_domain"=>"www.omero-china.com", 
- #   "site_email"=>"master@omero-china.com", 
- #   "site_phone"=>"400-123-800", 
- #   "admin_email"=>"admin@omero-china.com", 
- #   "admin_confirm_email"=>"omero.china@gmail.com"}
-  unless $sites
-    $sites = {}
-    Site.all.each do |s|
-      $sites[s.name.to_sym] = s.value
-    end
-  end
 
   private
   def find_region(region)
@@ -45,6 +33,22 @@ class ApplicationController < ActionController::Base
     end
     city
   end
+  # #global varite
+  # {"site_name"=>"欧美龙洗衣连锁", 
+  #   "site_domain"=>"www.omero-china.com", 
+  #   "site_email"=>"master@omero-china.com", 
+  #   "site_phone"=>"400-123-800", 
+  #   "admin_email"=>"admin@omero-china.com", 
+  #   "admin_confirm_email"=>"omero.china@gmail.com"}
+  def init_site_global
+    unless $sites
+      $sites = {}
+      Site.all.each do |s|
+        $sites[s.name.to_sym] = s.value
+      end
+    end
+  end
+  
 end
 
 ##==About Cache Key

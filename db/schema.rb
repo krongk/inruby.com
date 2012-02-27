@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111121165600003) do
+ActiveRecord::Schema.define(:version => 20120226123149) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -63,11 +63,11 @@ ActiveRecord::Schema.define(:version => 20111121165600003) do
     t.string   "address"
     t.string   "title"
     t.text     "message"
-    t.string   "cate"
+    t.string   "cate",       :default => "联系我们"
     t.text     "note"
-    t.boolean  "is_verfied"
+    t.boolean  "is_verfied", :default => false
     t.string   "verfied_by"
-    t.boolean  "is_deleted"
+    t.boolean  "is_deleted", :default => false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -171,28 +171,6 @@ ActiveRecord::Schema.define(:version => 20111121165600003) do
 
   add_index "resource_items", ["resource_cate_id"], :name => "index_resource_items_on_resource_cate_id"
   add_index "resource_items", ["resource_type"], :name => "index_resource_items_on_resource_type"
-
-  create_table "shops", :force => true do |t|
-    t.string   "name"
-    t.integer  "region_id"
-    t.integer  "city_id"
-    t.integer  "district_id"
-    t.string   "short_address"
-    t.string   "full_address"
-    t.string   "tel_phone"
-    t.string   "mobile_phone"
-    t.string   "fax"
-    t.string   "email"
-    t.integer  "qq"
-    t.string   "bus_list"
-    t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "shops", ["city_id"], :name => "index_shops_on_city_id"
-  add_index "shops", ["district_id"], :name => "index_shops_on_district_id"
-  add_index "shops", ["region_id"], :name => "index_shops_on_region_id"
 
   create_table "sites", :force => true do |t|
     t.string "name"

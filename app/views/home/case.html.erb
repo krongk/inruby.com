@@ -1,0 +1,10 @@
+<div class="cotnet2"><h3>成功案例</h3>
+  <ul>
+	  <% @news_items.each_with_index do |item, index| %>
+	    <li>
+	    <%= link_to image_tag(item.image_path), news_item_path(item, :case => true), :class => 'case_list_link' %>
+	    <p align="center"><%= link_to item.title, news_item_path(item, :case => true) %></p>
+	    </li>
+	  <% end %>
+ </ul>
+</div>

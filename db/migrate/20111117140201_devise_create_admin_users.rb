@@ -19,6 +19,8 @@ class DeviseCreateAdminUsers < ActiveRecord::Migration
     AdminUser.create!(:email => 'master@inruby.com', :password => 'inruby', :password_confirmation => 'inruby')
     AdminUser.create!(:email => 'kenrome@gmail.com', :password => 'inruby', :password_confirmation => 'inruby')
     AdminUser.create!(:email => 'kenrome@163.com', :password => 'inruby', :password_confirmation => 'inruby')
+    AdminUser.create!(:email => '406354072@qq.com', :password => 'inruby.com', :password_confirmation => 'inruby.com') #Tom
+    AdminUser.create!(:email => '94445362@qq.com', :password => 'inruby.com', :password_confirmation => 'inruby.com') #wang dong
 
     add_index :admin_users, :email,                :unique => true
     add_index :admin_users, :reset_password_token, :unique => true

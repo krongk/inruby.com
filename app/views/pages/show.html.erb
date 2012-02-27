@@ -3,5 +3,5 @@
 <% meta_description @page.meta_description %>
 
 <div id="page">
-  <%= simple_format @page.body %>
+  <%= @page.body.html_safe unless @page.body.blank?%>
 </div>

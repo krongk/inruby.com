@@ -1,30 +1,15 @@
-<p id="notice"><%= notice %></p>
+<%= render :partial => 'news_cates/menu' %>
 
-<p>
-  <b>News cate:</b>
-  <%= @news_item.news_cate %>
-</p>
+<div class="list">
+  <div style="margin:4px;">首页 > <a href="/news_cates">互联网观察</a> > <%=link_to @news_item.news_cate.name, news_cate_path(@news_item.news_cate_id)%></div>
 
-<p>
-  <b>Title:</b>
-  <%= @news_item.title %>
-</p>
-
-<p>
-  <b>Body:</b>
-  <%= simple_format @news_item.body %>
-</p>
-
-<p>
-  <b>External url:</b>
-  <%= @news_item.external_path %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @news_item.image_path %>
-</p>
-
-
-<%= link_to 'Edit', edit_news_item_path(@news_item) %> |
-<%= link_to 'Back', news_items_path %>
+  <div class="titlerb">
+    <h1><%= @news_item.title %></h1>
+    <p>发布时间: <%= @news_item.updated_at %></p>
+  </div>
+  <div class="content">
+    <%= image_tag(@news_item.image_path) if params[:case] %><br/>
+    
+    <%= @news_item.body.html_safe unless @news_item.body.blank?%>
+  </div>
+</div>

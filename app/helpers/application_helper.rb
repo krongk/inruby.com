@@ -15,6 +15,13 @@ module ApplicationHelper
   	content_for(:meta_description){ meta_description}
   end
 
+  #
+  def current_class(name)
+    # if params.values.join(' ') =~ /\b#{name}\b/i
+    #   return ' class = "current"'.html_safe
+    # end
+    ''
+  end
   #链接菜单导航，如：首页/关于我们
   #input: nav_bar [['首页', '/'], ['关于', '/about']]
   def nav_bar(bar_arr)

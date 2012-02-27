@@ -21,20 +21,12 @@
 </head> 
  
 <body> 
- <h1><%=$sites[:site_name]%></h1>
- 
- <%=yield %>
-
- <div class="footer">
-  <p style="line-height:20px; text-align:left;">
-    <a href="#" title="关于我们">关于我们</a> | 
-    <a href="#服务团队">服务团队</a> | 
-    <a href="#" title="联系我们">联系我们</a> | 
-    <a href="#" title="我们优势">我们优势</a><br />
-    Email: <%=$sites[:site_email]%>  Phone: <%=$sites[:site_phone]%><br/>
-    Copyright @ 2008 - 2012 <br/>
-    <%=$sites[:site_name]%>(<%=$sites[:site_domain]%>) All Rights Reserved.  
-    </p>
+ <div id="wrapper">
+  <%=render :partial => "layouts/header" %>
+   <div class="content">
+     <%=yield %>
+   </div>
+   <%=render :partial => "layouts/footer" %>
  </div>
 </body>
 </html>

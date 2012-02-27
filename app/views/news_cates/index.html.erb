@@ -1,23 +1,15 @@
-<h1>Listing news_cates</h1>
+<%= render :partial => 'news_cates/menu' %>
 
-<table>
-  <tr>
-    <th>Name</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
+<div class="list">
+  <h3 class="titlbg">互联网动态</h3>
 
-<% @news_cates.each do |news_cate| %>
-  <tr>
-    <td><%= news_cate.name %></td>
-    <td><%= link_to 'Show', news_cate %></td>
-    <td><%= link_to 'Edit', edit_news_cate_path(news_cate) %></td>
-    <td><%= link_to 'Destroy', news_cate, confirm: 'Are you sure?', method: :delete %></td>
-  </tr>
-<% end %>
-</table>
-
-<br />
-
-<%= link_to 'New News cate', new_news_cate_path %>
+  <ul>
+    <% @news_items.each_with_index do |item, index| %>
+      <li>
+        <h3 class="titbg" ><%=link_to item.title, news_item_path(item)%></h3>
+        <p><%= simple_format item.body.truncate(200)%></p>
+        <p class="ztn"><strong><%=link_to '[阅读详情]↓', news_item_path(item)%></strong> <%=item.updated_at.to_s %></p>
+      </li>
+    <% end %>
+  </ul>
+</div>
