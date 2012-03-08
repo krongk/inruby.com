@@ -23,10 +23,10 @@
 <body> 
  <div id="wrapper">
   <%=render :partial => "layouts/header" %>
-   <div class="content">
+   <div class="content" style="overflow:hidden; margin-top: 10px;">
      <%=yield %>
    </div>
-   <%=render :partial => "layouts/footer" %>
  </div>
+ <%=render :partial => "layouts/footer" %>
 </body>
 </html>

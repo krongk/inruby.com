@@ -17,9 +17,9 @@ module ApplicationHelper
 
   #
   def current_class(name)
-    # if params.values.join(' ') =~ /\b#{name}\b/i
-    #   return ' class = "current"'.html_safe
-    # end
+    if params.values.join(' ') =~ /\b#{name}/i
+      return ' class = "current"'.html_safe
+    end
     ''
   end
   #链接菜单导航，如：首页/关于我们
