@@ -1,3 +1,4 @@
+<%#encoding: utf-8 %>
 <%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
@@ -12,15 +13,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <%= f.label :name, "姓名：" %><br />
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :phone %><br />
+    <%= f.label :phone, "电话：" %><br />
     <%= f.text_field :phone %>
   </div>
   <div class="field">
-    <%= f.label :email %><br />
+    <%= f.label :email, "电子邮件：" %><br />
     <%= f.text_field :email %>
   </div>
   <div class="field">
@@ -32,18 +33,18 @@
     <%= f.text_field :company %>
   </div>
   <div class="field">
-    <%= f.label :address %><br />
+    <%= f.label :address, "地址：" %><br />
     <%= f.text_field :address %>
   </div>
   <div class="field">
-    <%= f.label :title %><br />
+    <%= f.label :title, "标题：" %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :message %><br />
+    <%= f.label :message, "内容：" %><br />
     <%= f.text_area :message %>
   </div>
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :cate %><br />
     <%= f.text_field :cate %>
   </div>
@@ -62,8 +63,6 @@
   <div class="field">
     <%= f.label :is_deleted %><br />
     <%= f.check_box :is_deleted %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  </div> -->
+  <div style="margin:20px 0 20px 100px;"><input type="image" src="/assets/subit.jpg" /></div>
 <% end %>

@@ -10,5 +10,6 @@ class CreateNewsItems < ActiveRecord::Migration
       t.timestamps
     end
     add_index :news_items, :news_cate_id
+    add_index :news_items, :title
   end
 end

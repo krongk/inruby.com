@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120226123149) do
+ActiveRecord::Schema.define(:version => 20120309081451) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -81,6 +81,7 @@ ActiveRecord::Schema.define(:version => 20120226123149) do
   add_index "districts", ["city_id"], :name => "index_districts_on_city_id"
 
   create_table "news_cates", :force => true do |t|
+    t.string "cate", :limit => 64, :default => "news", :null => false
     t.string "name"
   end
 
@@ -149,6 +150,64 @@ ActiveRecord::Schema.define(:version => 20120226123149) do
   end
 
   add_index "product_items", ["product_cate_id"], :name => "index_product_items_on_product_cate_id"
+
+  create_table "project_cates", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "project_cates", ["name"], :name => "index_project_cates_on_name"
+
+  create_table "project_items", :force => true do |t|
+    t.integer  "project_cate_id"
+    t.string   "tags"
+    t.string   "status"
+    t.string   "title"
+    t.string   "summary"
+    t.text     "content"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "company"
+    t.string   "city"
+    t.string   "address"
+    t.string   "site_url"
+    t.integer  "sort_id",         :default => 10000
+    t.string   "is_verfied",      :default => "n"
+    t.string   "is_forager",      :default => "n"
+    t.string   "forager_url"
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "project_items", ["project_cate_id"], :name => "index_project_items_on_project_cate_id"
+  add_index "project_items", ["title"], :name => "index_project_items_on_title"
+
+  create_table "projects", :force => true do |t|
+    t.string   "cate",       :default => "数据采集"
+    t.string   "status",     :default => "项目推广"
+    t.string   "name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "company"
+    t.string   "city"
+    t.string   "address"
+    t.string   "title"
+    t.text     "content"
+    t.string   "site_url"
+    t.boolean  "is_verfied", :default => false
+    t.boolean  "is_forager", :default => false
+    t.string   "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "projects", ["cate"], :name => "index_projects_on_cate"
+  add_index "projects", ["is_forager"], :name => "index_projects_on_is_forager"
+  add_index "projects", ["is_verfied"], :name => "index_projects_on_is_verfied"
+  add_index "projects", ["status"], :name => "index_projects_on_status"
 
   create_table "regions", :force => true do |t|
     t.string "name"

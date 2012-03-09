@@ -37,7 +37,7 @@ gem 'activeadmin', '0.3.4'
 gem "meta_search",    '>= 1.1.0.pre'
 
 #fix bug:  Could not find a JavaScript runtime -- just on linux system
-# gem 'therubyracer'
+gem 'therubyracer'
 
 #===WYSIWYG Editor
 gem 'tinymce-rails', '3.4.7'

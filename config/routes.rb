@@ -1,5 +1,9 @@
 RailsOnWeb::Application.routes.draw do
 
+  resources :project_items
+
+  resources :project_cates
+
   resources :contacts
 
   resources :comments

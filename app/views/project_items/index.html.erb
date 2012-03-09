@@ -1,0 +1,57 @@
+<h1>Listing project_items</h1>
+
+<table>
+  <tr>
+    <th>Project cate</th>
+    <th>Tags</th>
+    <th>Status</th>
+    <th>Title</th>
+    <th>Summary</th>
+    <th>Content</th>
+    <th>Name</th>
+    <th>Phone</th>
+    <th>Email</th>
+    <th>Company</th>
+    <th>City</th>
+    <th>Address</th>
+    <th>Site url</th>
+    <th>Sort</th>
+    <th>Is verfied</th>
+    <th>Is forager</th>
+    <th>Forager url</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @project_items.each do |project_item| %>
+  <tr>
+    <td><%= project_item.project_cate %></td>
+    <td><%= project_item.tags %></td>
+    <td><%= project_item.status %></td>
+    <td><%= project_item.title %></td>
+    <td><%= project_item.summary %></td>
+    <td><%= project_item.content %></td>
+    <td><%= project_item.name %></td>
+    <td><%= project_item.phone %></td>
+    <td><%= project_item.email %></td>
+    <td><%= project_item.company %></td>
+    <td><%= project_item.city %></td>
+    <td><%= project_item.address %></td>
+    <td><%= project_item.site_url %></td>
+    <td><%= project_item.sort_id %></td>
+    <td><%= project_item.is_verfied %></td>
+    <td><%= project_item.is_forager %></td>
+    <td><%= project_item.forager_url %></td>
+    <td><%= project_item.note %></td>
+    <td><%= link_to 'Show', project_item %></td>
+    <td><%= link_to 'Edit', edit_project_item_path(project_item) %></td>
+    <td><%= link_to 'Destroy', project_item, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Project item', new_project_item_path %>
