@@ -36,6 +36,26 @@ module ApplicationHelper
     }
   end
   
+  #tags
+  def project_tags
+    $tags ||= []
+    if $tags.blank?
+      puts 'init tags......................................'
+      ProjectItem.find_each do |item|
+        item.tags.split(',').map{|t| t.strip}.uniq.each do |t|
+          next if $tags.include?(t)
+          $tags << t
+        end
+      end
+    end
+    html = ["<h3>标签云</h3><div class='tags'>"]
+    $tags.each do |t|
+      html << %{<a href="/project_items/?tag=#{t}" target="_blank" class="size#{rand(5)}"><span class="color#{rand(5)}">#{t}</span></a>}
+    end
+    html << "</div>"
+    html.join.html_safe
+  end
+
   #flash动画显示
   # eg: play_flash("flash/top_banner.swf")
   # or: play_flash asset_path("flash/top_banner.swf"), :width => '985', :height => '249'

@@ -2,8 +2,10 @@
 <% meta_keywords ["企业信息化咨询，成都红宝石企业网络策划"].join(' - ') %>
 <% meta_description ["成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join(' - ') %>
 
-
-<%= render :partial => 'project_cates/menu' %>
+<div class="left">
+  <%= render :partial => 'project_cates/menu' %>
+  <%= project_tags %>
+</div>
 
 <div class="list">
   <h3 class="titlbg"><%=@project_cate.name %></h3>
@@ -17,5 +19,5 @@
       </li>
     <% end %>
   </ul
-  <%= will_paginate @project_items %>
+  <%= will_paginate @project_items, :next_label => "下一页", :prev_label => "上一页" %>
 </div>

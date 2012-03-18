@@ -4,4 +4,5 @@ class ProductItem < ActiveRecord::Base
   def self.recent(count)
     ProductItem.order("updated_at DESC").limit(count)
   end
+
 end

@@ -1,7 +1,8 @@
 class ProjectCatesController < InheritedResources::Base
   before_filter :authenticate_admin_user!, :except => [:index, :show]
   before_filter :load_project_cate
-
+  include ApplicationHelper
+  
   def index
     @project_items = params[:project_cate_id] ? 
       ProjectItem.where(:project_cate_id => params[:project_cate_id]).paginate(:page => params[:page] || 1) : 
