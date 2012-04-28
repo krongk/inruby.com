@@ -1,4 +1,10 @@
 <%#encoding: utf-8 %>
+<script>
+    $(document).ready(function(){
+      $("#new_contact").validate();
+    });
+</script>
+
 <%= form_for(@contact) do |f| %>
   <% if @contact.errors.any? %>
     <div id="error_explanation">
@@ -14,11 +20,11 @@
 
   <div class="field">
     <%= f.label :name, "姓名：" %><br />
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :class => 'required' %>
   </div>
   <div class="field">
     <%= f.label :phone, "电话：" %><br />
-    <%= f.text_field :phone %>
+    <%= f.text_field :phone, :class => 'required number'%>
   </div>
   <div class="field">
     <%= f.label :email, "电子邮件：" %><br />
@@ -28,7 +34,7 @@
     <%= f.label :qq %><br />
     <%= f.text_field :qq %>
   </div>
-  <div class="field">
+<!--   <div class="field">
     <%= f.label :company %><br />
     <%= f.text_field :company %>
   </div>
@@ -39,10 +45,10 @@
   <div class="field">
     <%= f.label :title, "标题：" %><br />
     <%= f.text_field :title %>
-  </div>
+  </div> -->
   <div class="field">
     <%= f.label :message, "内容：" %><br />
-    <%= f.text_area :message %>
+    <%= f.text_area :message, :cols => 80, :value => '请详细描述您的需求' %>
   </div>
 <!--   <div class="field">
     <%= f.label :cate %><br />
@@ -64,5 +70,6 @@
     <%= f.label :is_deleted %><br />
     <%= f.check_box :is_deleted %>
   </div> -->
-  <div style="margin:20px 0 20px 100px;"><input type="image" src="/assets/subit.jpg" /></div>
+   
+  <%= f.submit "   提  交    ", :class => "button" %>
 <% end %>

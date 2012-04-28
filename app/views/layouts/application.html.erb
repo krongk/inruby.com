@@ -5,8 +5,8 @@
   <meta http-equiv="Content-Language" content="zh-cn" />
   <meta name="robots" content="all" />
   <meta name="author" content="omero" />
-  <meta name="Copyright" content="Omero Lcd, All Rights Reserved." />
-  <title><%= yield(:title)%> </title>
+  <meta name="Copyright" content="Inruby Lcd, All Rights Reserved." />
+  <title><%= yield(:title) %> </title>
   <meta name="keywords" content="<%= yield(:meta_keywords)%>" />
   <meta name="description" content="<%= yield(:meta_description)%>" />
     
@@ -17,16 +17,26 @@
   <script type="text/javascript">
 
   </script>
-
+  <!--[if lt IE 7]>
+    <link href="ie_style.css" rel="stylesheet" type="text/css" />
+  <![endif]-->
 </head> 
  
-<body> 
- <div id="wrapper">
+<body id="page1">
   <%=render :partial => "layouts/header" %>
-   <div class="content" style="overflow:hidden; margin-top: 10px;">
-     <%=yield %>
-   </div>
- </div>
+  <div id="content">
+    <div class="container">
+      <div class="wrapper">
+        <div class="aside">
+           <%=render :partial => "layouts/aside" %>
+           <%= yield :aside %>
+        </div>
+        <div class="mainContent">
+          <%=yield %>
+        </div>
+      </div>
+    </div>
+  </div>
  <%=render :partial => "layouts/footer" %>
 </body>
 </html>

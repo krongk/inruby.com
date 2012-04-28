@@ -22,13 +22,18 @@ RailsOnWeb::Application.routes.draw do
 
   resources :news_cates
 
+  #resources :page_parts
+  #resources :parts
+  #resources :sites
+  resources :pages
+
   get "home/index"
-  get "home/location"
-  get "home/site_map"
-  get "home/case"
-  get "home/slide_nav"
-  get "home/nav_img_and_jquery"
-  get "home/nav_img_and_jquery2"
+  match "about" => "pages#show", :id => 'about'
+  match "sitemap" => "pages#show", :id => 'sitemap'
+  match "contact" => "contacts#new"
+  
+  match "form" => "home#form"
+  match "search" => "home#search"
 
   match "upload" => "resource_items#upload"
   ActiveAdmin.routes(self)
@@ -37,11 +42,6 @@ RailsOnWeb::Application.routes.draw do
 
   devise_for :users
 
-  #resources :page_parts
-  #resources :parts
-  #resources :sites
-  resources :pages
-  match "/en/:id" => "pages#en"
 
   # match "/a/:model/:state" => "sanctions#index", :constraints => {:model => /(doctor|dentist)/, :state => /(wa|oh)/}
   # scope "/:model/:state/:cate(/:history)", :constraints => {:history => /history/i, :cate => /(date|title)/i, :model => /(doctor|dentist|podiatrist)/i, :state => /(#{StateList::STATE_ABBR.join('|')})/i } do

@@ -65,6 +65,8 @@ GEM
     geo_location (0.4.2)
     has_scope (0.5.1)
     hike (1.2.1)
+    hpricot (0.8.4)
+    htmlentities (4.3.0)
     i18n (0.6.0)
     i18n_yaml_generator (0.0.1)
     inherited_resources (1.2.2)
@@ -80,6 +82,11 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
+    mechanize (2.0.1)
+      net-http-digest_auth (~> 1.1, >= 1.1.1)
+      net-http-persistent (~> 1.8)
+      nokogiri (~> 1.4)
+      webrobots (~> 0.0, >= 0.0.9)
     meta_search (1.1.1)
       actionpack (~> 3.1.0)
       activerecord (~> 3.1.0)
@@ -88,6 +95,8 @@ GEM
     mime-types (1.17.2)
     multi_json (1.0.3)
     mysql2 (0.3.11-x86-mingw32)
+    net-http-digest_auth (1.1.1)
+    net-http-persistent (1.9)
     nokogiri (1.5.0-x86-mingw32)
     orm_adapter (0.0.5)
     polyamorous (0.5.0)
@@ -146,6 +155,8 @@ GEM
       multi_json (>= 1.0.2)
     warden (1.1.0)
       rack (>= 1.0)
+    webrobots (0.0.11)
+      nokogiri (>= 1.4.4)
     will_paginate (3.0.pre2)
 
 PLATFORMS
@@ -157,8 +168,11 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   devise (= 1.5.0)
   geo_location
+  hpricot (= 0.8.4)
+  htmlentities
   i18n_yaml_generator (= 0.0.1)
   jquery-rails (= 1.0.14)
+  mechanize (= 2.0.1)
   meta_search (>= 1.1.0.pre)
   mysql2 (= 0.3.11)
   nokogiri

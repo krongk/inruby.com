@@ -1,7 +1,0 @@
-<%#encoding: utf-8 %>
-<h3>互联网观察</h3>
-<ul>
-<% @project_cates.each_with_index do |item, index| %>
-  <li><%= link_to item.name, project_cates_path(:project_cate_id => item.id), :class => "no#{index + 1}" %></li> 
-<% end %>
-</ul>

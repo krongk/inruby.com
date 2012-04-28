@@ -1,9 +1,0 @@
-<%#encoding: utf-8 %>
-<div class="left">
-  <h3>互联网观察</h3>
-  <ul>
-  <% @news_cates.each_with_index do |item, index| %>
-    <li><%= link_to item.name, news_cates_path(:news_cate_id => item.id), :class => "no#{index + 1}" %></li> 
-  <% end %>
-  </ul>
-</div>

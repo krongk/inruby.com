@@ -1,35 +1,13 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <b>Product cate:</b>
-  <%= @product_item.product_cate %>
-</p>
-
-<p>
-  <b>Name:</b>
-  <%= @product_item.name %>
-</p>
-
-<p>
-  <b>Description:</b>
-  <%= @product_item.description %>
-</p>
-
-<p>
-  <b>Price:</b>
-  <%= @product_item.price %>
-</p>
-
-<p>
-  <b>Image url:</b>
-  <%= @product_item.image_url %>
-</p>
-
-<p>
-  <b>Is visible:</b>
-  <%= @product_item.is_visible %>
-</p>
+<% title [@product_item.title, "成都红宝石企业建站"].join('-') %>
+<% meta_keywords [@product_item.title,"建站成功案例，案例展示，成都红宝石企业建站，红宝石网络"].join('-') %>
+<% meta_description [@product_item.title,"成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join('-') %>
 
 
-<%= link_to 'Edit', edit_product_item_path(@product_item) %> |
-<%= link_to 'Back', product_items_path %>
+<h2><%=@product_item.title %></h2>
+<div class="img-box">
+  <%=image_tag @product_item.image_path %>
+  <h5><%=@product_item.title %></h5>
+  <%# other some words %>
+</div>
+
+<%= simple_format @product_item.description %>

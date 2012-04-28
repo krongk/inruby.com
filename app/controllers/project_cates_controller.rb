@@ -5,13 +5,13 @@ class ProjectCatesController < InheritedResources::Base
   
   def index
     @project_items = params[:project_cate_id] ? 
-      ProjectItem.where(:project_cate_id => params[:project_cate_id]).paginate(:page => params[:page] || 1) : 
-      ProjectItem.paginate(:page => params[:page] || 1)
+      ProjectItem.where(:project_cate_id => params[:project_cate_id]).order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 16) : 
+      ProjectItem.order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 16)
     @project_cate = ProjectCate.find_by_id(params[:project_cate_id]) || ProjectCate.first
   end
 
   def show
-    @project_items = ProjectCate.find(params[:id]).project_items.paginate(:page => params[:page] || 1)
+    @project_items = ProjectCate.find(params[:id]).project_items.paginate(:page => params[:page] || 1, :per_page => 16)
     super
   end
 

@@ -1,16 +1,15 @@
 class ProductItemsController < InheritedResources::Base
   before_filter :authenticate_admin_user!, :except => [:index, :show]
-  before_filter :load_project_cate
-  include ApplicationHelper
+  before_filter :load_product_cate
 
   def index
-  	@project_items = params[:tag] ?
-    ProjectItem.where("tags regexp '#{params[:tag].strip}'").paginate(:page => params[:page] || 1) :
-    ProjectItem.paginate(:page => params[:page] || 1)
+  	@product_items = params[:tag] ?
+    ProductItem.where("tags regexp '#{params[:tag].strip}'").order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 6) :
+    ProductItem.order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 6)
   end
 
   private
-  def load_project_cate
-    @project_cates = ProjectCate.all
+  def load_product_cate
+    @product_cates = ProductCate.all
   end
 end

@@ -1,6 +1,6 @@
 #encoding: utf-8
 ActiveAdmin.register ProductItem do
-  menu :parent => "产品中心"
+  menu :parent => "成功案例"
 
   index do
     column :id
@@ -16,7 +16,7 @@ ActiveAdmin.register ProductItem do
 
   show do |item|
     div :class => 'panel' do
-        h3 '产品详情'
+        h3 '案例详情'
         div :class => 'panel_contents' do
             div :class =>"attributes_table product_cate", :id=>"attributes_table_product_cate_#{item.product_cate_id}" do
                 table do
@@ -25,15 +25,15 @@ ActiveAdmin.register ProductItem do
                     td item.id
                   end
                   tr do
-                    th '产品分类'
+                    th '案例分类'
                     td ProductCate.find(item.product_cate_id).name unless ProductCate.find(item.product_cate_id).nil?
                   end
                   tr do
-                    th '产品名称'
+                    th '案例名称'
                     td item.title
                   end
                   tr do
-                    th '产品价格'
+                    th '案例价格'
                     td item.price
                   end
                   tr do
@@ -41,7 +41,7 @@ ActiveAdmin.register ProductItem do
                     td item.updated_at
                   end
                   tr do
-                    th '产品详情'
+                    th '案例详情'
                     td simple_format item.description
                   end
                 end

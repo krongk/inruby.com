@@ -1,43 +1,21 @@
-<div class="banner"><img src="/assets/banner.jpg" /></div>
-<div class="tuigi"><a href="/contacts/new"><img src="/assets/banner2.jpg" /></a></div>
-<div class="content">
-  <div class="msruby">
-    <ul>
-      <li><div class="icon"></div>
-        <p class="ruby-wz"><strong>【开发模式】</strong><br />
-          我们不断地尝试敏捷开发方法。通过互动方式为特征，快速的开发周期，并不断响应需求/解决方案为基础的优先次序，敏捷团队已经证明可以通过更少的时间产生优异的业绩。
-        </p>
-      </li>
-      <li><div class="icon2"></div>
-        <p class="ruby-wz"><strong>【合作理念】</strong><br />
-          我们作为您的商业伙伴，为您制定和实施您认为最佳的解决方案，以满足您的需求。有见地的分析和战略规划，我们的工作给你你需要的竞争优势。</p>
-      </li>
-      <li><div class="icon3"></div>
-        <p class="ruby-wz"><strong>【服务范围】</strong><br />
-          企业网站策划、开发、运维
-          电子商务、Web2.0应用开发
-          网络数据采集、数据分析
-          网络营销及推广
-          IT教育培训</p>
-      </li>
-      <li><div class="icon4">
-        </div>
-        <p class="ruby-wz"><strong>【团队理念】</strong><br />
-          勤奋、务实、高效；<br />
-          简洁、乐观、大方。</p>
-      </li>
-    </ul>
-  </div>
+<% title ["成都红宝石信息技术有限公司，您身边的企业信息化解决专家"].join(' - ') %>
+<% meta_keywords ["成都红宝石企业信息化策划专家"].join(' - ') %>
+<% meta_description ["成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join(' - ') %>
 
-  <div class="about"><strong>我们的优势</strong>  互联网总是以先进的技术作为最大的推动力，我们以不断的进取精神探索新技术，让下一个项目用上最先进的技术。</div>
-  <div class="jsruby">
-    <ul>
-      <li><p class="title">关注最新的开发服务平台：云计算</p>
-        <p>云计算，主要是指服务的交付和使用模式，指通过网络以按需、易扩展的方式获得所需的服务。提供资源的网络被称为'云'。'云'中的资源在使用者看来是可以无限扩展的，并且可以随时获取，按需使用，随时扩展，按使用付费。通过云计算，我们就像使用日常水电一样使用网络资源，网络将进入云计算时代。</p>
-      </li>
-      <li><p class="title">追随Web新技术的发展：Ruby</p>
-        <p>Ruby，一种为简单快捷面向对象编程而创的脚本语言， Ruby on Rails是一个 Web 应用程序框架,是一个相对较新的 Web 应用程序框架，构建在 Ruby 语言之上。它被宣传为现有企业框架的一个替代，而它的目标，简而言之，就是让生活，至少是 Web 开发方面的生活，变得更轻松。</p>
-      </li>
-    </ul>
+<% if page = Page.find_by_path_name('home') %>
+   <%=page.body.html_safe unless page.body.blank?%>
+<% end %>
+
+<h3>最新项目展示</h3>
+<div class="wrapper">
+<% ProductItem.recent(3).each_with_index do |item, index| %>
+  <div class="col-<%=index + 1 %>">
+    <div class="box1">
+      <p><%=image_tag item.image_path, :title => item.title, :width => '140px' %></p>
+      <h4><%= item.title.truncate(20) %></h4>
+      <p class="p1"><%= truncate_content(item.description, 20) %></p>
+      <div class="wrapper"><a href="<%=product_item_path(item)%>" class="link1"><em><b>阅读更多</b></em></a></div>
+    </div>
   </div>
+<% end %>
 </div>

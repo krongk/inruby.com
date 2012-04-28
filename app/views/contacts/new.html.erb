@@ -1,5 +1,8 @@
-<div class="banner" style="padding-top:15px;"><img src="/assets/titlefn.jpg" /></div>
+  <% if page = Page.find_by_path_name('contact') %>
+     <%=page.body.html_safe unless page.body.blank?%>
+  <% end %>
 
-<div class="content" style="padding: 20px; 40px;">
-    <%= render 'form' %>
-</div>
+  <h3>提交留言</h3>
+  <div class="wrapper">
+    <%=render 'form' %>
+  </div>

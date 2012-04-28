@@ -2,12 +2,13 @@
 <% meta_keywords [@project_item.title,"建站成功案例，案例展示，成都红宝石企业建站，红宝石网络"].join('-') %>
 <% meta_description [@project_item.title,"成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join('-') %>
 
-<div class="left">
-  <%= render :partial => 'project_cates/menu' %>
-</div>
+<% content_for :aside do %>
+  <br/>
+  <%= project_tags %>
+<% end %>
 
 <div class="news_main">
-  <div style="margin:4px;">首页 > <a href="/project_cates">创投咨询</a> > <%=link_to @project_item.project_cate.name, project_cate_path(@project_item.project_cate_id)%></div>
+  <div style="margin:4px;">首页 > <a href="/project_cates">项目资源库</a> > <%=link_to @project_item.project_cate.name, project_cate_path(@project_item.project_cate_id)%></div>
 
   <div class="titlerb">
     <h1><%= @project_item.title %></h1>
