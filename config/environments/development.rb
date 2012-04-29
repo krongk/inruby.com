@@ -36,7 +36,7 @@ RailsOnWeb::Application.configure do
     :port => 587,
     :domain => "mydomain.com",
     :authentication => :login,
-    :user_name => "omero.china",
+    :user_name => "kenrome",
     :password => "inruby.com"
   }
 end
