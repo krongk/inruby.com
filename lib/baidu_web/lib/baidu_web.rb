@@ -16,7 +16,7 @@ module BaiduWeb
 	  def search(key_word, options)
 	  	result = {:record_arr => [], :ext_key_arr => [], :source => 'web'}
 
-	  	@ic = Iconv.new("UTF-8//IGNORE", "GBK//IGNORE")
+	  	#@ic = Iconv.new("UTF-8//IGNORE", "GBK//IGNORE")
 
 	  	@key_word = key_word
 	  	return result if @key_word.blank?
@@ -43,12 +43,12 @@ module BaiduWeb
 		#
 		url = "http://www.baidu.com/s?wd=#{@key_word}&rn=#{@per_page}&pn=#{item_index}"
 		#debug: url
-		puts url
 		spage = agent.get(url)
 		#debug
 		# File.open(File.join(File.dirname(__FILE__), 'baidu_result.html'), "w"){|f| f.write(@ic.iconv(spage.body))}
 
-		doc = Hpricot(@ic.iconv(spage.body))
+		#doc = Hpricot(@ic.iconv(spage.body))
+		doc = Hpricot(spage.body)
 
 	  	#- this is hack on linux:
 	  	#case1:
@@ -77,38 +77,34 @@ module BaiduWeb
 	  	#remove op recors, e.g. search by 'mysql', see the second record.
 	  	content.search("table[@class='result-op']").remove
 
-		content.search("table").each do |res|
-			next if res.at("h3").nil?
+			content.search("table[@class='result']").each do |res|
+				next if res.at("h3").nil?
 
-			record = Record.new
+				record = Record.new
 
-			title = res.at("h3").inner_text
-			record.title = title
-			record.url = res.at("h3").at("a").attributes['href'].to_s
+				title = res.at("h3").inner_text
+				record.title = title
+				record.url = res.at("h3").at("a").attributes['href'].to_s
 
-			summary = []
-			flag = true
-			res.at("font").children.each do |elem|
-			  if elem.to_s ==  "<br />"
-			  	flag = false
-			  end
-			  if flag
-			  	summary << elem.to_s
-			  else
+				summary = []
+				res.at("td[@class='f']").children.each do |elem|
 			  	if elem.respond_to?(:attributes) && elem.attributes['href'] =~ /http:\/\/cache.baidu.com/
 			  	  record.cached_url = elem.attributes['href'] 
+			  	  next
 			  	elsif elem.respond_to?(:attributes) && elem.attributes['class'] == 'g' && elem.to_s =~ /(\d{4}-\d{1,2}-\d{1,2})/
 			  	  record.updated_date = $1
+			  	  next
 			    end
-			  end
-			end
-			record.summary = summary.join('').gsub(/百度|百度快照|快照/, '')
+			    next if elem.respond_to?(:attributes) && elem.attributes['class'] == 't'
+			    summary << elem.inner_text
+				end
+				record.summary = summary.join(' ').gsub(/百度|百度快照|快照/, '')
 
-			item_index += 1
-			record.item_index = item_index
-			record_arr << record
-		end
-		return record_arr
+				item_index += 1
+				record.item_index = item_index
+				record_arr << record
+			end
+			return record_arr
 	  end
 
 	  def extract_extension_key(doc)

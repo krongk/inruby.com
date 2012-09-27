@@ -10,7 +10,8 @@
 <% else %>
   <% @result[:record_arr].each_with_index do |r, index| %>
     <div class="search_item" id="search_item_<%=index%>">
-      <h3 class="titbg" ><%= link_to truncate_content(r.title, 60), r.url, :target => '_blank'%> [<span style="color:#999; font-size:12px;">更新日期：<%= r.updated_date %></span>]</h3>
+      <h3 class="titbg" ><%= link_to truncate_content(r.title, 60), r.url, :target => '_blank'%></h3>
+      <%= link_to r.url[0..30], r.url%><br/>
       <%= (r.summary).html_safe %>
     </div>
   <% end %>
