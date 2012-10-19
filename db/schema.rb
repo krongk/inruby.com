@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120309081451) do
+ActiveRecord::Schema.define(:version => 20121120053144) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -81,8 +81,9 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
   add_index "districts", ["city_id"], :name => "index_districts_on_city_id"
 
   create_table "news_cates", :force => true do |t|
-    t.string "cate", :limit => 64, :default => "news", :null => false
+    t.string "cate",    :limit => 64, :default => "news", :null => false
     t.string "name"
+    t.string "en_name"
   end
 
   add_index "news_cates", ["name"], :name => "index_news_cates_on_name", :unique => true
@@ -95,6 +96,11 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
     t.string   "image_path"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "summary"
+    t.string   "tags"
+    t.string   "meta_keywords"
+    t.string   "meta_description"
+    t.string   "en_title"
   end
 
   add_index "news_items", ["news_cate_id"], :name => "index_news_items_on_news_cate_id"
@@ -174,8 +180,8 @@ ActiveRecord::Schema.define(:version => 20120309081451) do
     t.string   "address"
     t.string   "site_url"
     t.integer  "sort_id",         :default => 10000
-    t.string   "is_verfied",      :default => "n"
-    t.string   "is_forager",      :default => "n"
+    t.boolean  "is_verfied"
+    t.boolean  "is_forager"
     t.string   "forager_url"
     t.string   "note"
     t.datetime "created_at"

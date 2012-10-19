@@ -1,6 +1,6 @@
 <% title [@news_item.title, "成都红宝石企业建站"].join('-') %>
-<% meta_keywords [@news_item.title,"建站成功案例，案例展示，成都红宝石企业建站，红宝石网络"].join('-') %>
-<% meta_description [@news_item.title,"成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join('-') %>
+<% meta_keywords @news_item.meta_keywords || [@news_item.title,"建站成功案例，案例展示，成都红宝石企业建站，红宝石网络"].join('-') %>
+<% meta_description @news_item.meta_description || [@news_item.title,"成都红宝石企业网站建设专家，开发团队具有多年互联网从业经验，团队为企业提供策划、开发、推广、运维一站式服务！联系电话：15928661802"].join('-') %>
 
 
 <div class="news_main">
@@ -10,6 +10,17 @@
     <h1><%= @news_item.title %></h1>
   </div>
   <div class="news_content">
+    <% unless @news_item.tags.blank? %>
+      <div class="tags">分类标签：
+        <% tags = @news_item.tags.split(/\s+/) 
+           tags = tags.select{|t| t !~ /^\d+$/}.map{|t| t.downcase}.uniq
+        %>
+
+        <% tags.each do |tag|%>
+           <%=link_to tag, "/news_cates/#{tag}" %>
+        <% end %>
+      </div>
+    <% end %>
     <% unless @news_item.image_path.blank? %>
      <div class="news_img"><%= image_tag(@news_item.image_path) %></div>
     <% end %>
@@ -21,7 +32,7 @@
     <!--相关新闻-->
     <hr/>
     <div class="related">
-     <h3>相关信息</h3>
+     <h3>相关信息推荐</h3>
      <ul>
        <% NewsItem.recent_related(@news_item.id).each do |item|%>
          <li><%= link_to item.title, news_item_path(item.id)%></li>
