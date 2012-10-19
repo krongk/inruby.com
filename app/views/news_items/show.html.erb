@@ -22,7 +22,9 @@
       </div>
     <% end %>
     <% unless @news_item.image_path.blank? %>
-     <div class="news_img"><%= image_tag(@news_item.image_path) %></div>
+      <% site_image              = %{<div class="news_img"><span class="site_img"><img title="#{@news_item.title}--inruby.com" src="/assets/news1/#{@news_item.image_path}"/></span></div>} 
+      @news_item.body = @news_item.body.to_s.sub(/(:|：|。)\n/, "。\n#{site_image}\n")
+      %>
     <% end %>
     &nbsp;&nbsp;&nbsp;&nbsp;<%= simple_format @news_item.body.to_s.gsub(/^<br\/>|<p>/, '').html_safe unless @news_item.body.blank?%>
     <div class="bshare">

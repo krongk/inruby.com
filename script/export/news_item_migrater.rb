@@ -49,16 +49,16 @@ class Migrator
 		c_post.title            = l_post.title
 		c_post.external_path    = l_post.url
 		c_post.en_title         = Pinyin.t(l_post.title)
-		#c_post.image_path       = img auto integrated in body
+		img_path = '/assets/news1/' + (l_post.img_path =~ /[0-9]jpeg$/ ? l_post.img_path.gsub(/jpeg$/, '.jpeg') : l_post.img_path)
+		c_post.image_path       = img_path
 		c_post.tags             = l_post.tags
 		c_post.summary          = l_post.summary
 		c_post.meta_keywords    = "#{l_post.title} -- www.inruby.com(#{l_post.tags}, 成都，ruby, ruby on rails, 网站建设，软件开发，数据采集)"
 		c_post.meta_description = "#{l_post.title} -- www.inruby.com(#{l_post.tags}, Ruby on Rails 网站建设，Web应用开发， 数据采集)成都都红宝石企业网站建设为企业提供网站策划、开发、推广、运维一站式服务！"
 		
-		img_path = '/assets/news1/' + (l_post.img_path =~ /[0-9]jpeg$/ ? l_post.img_path.gsub(/jpeg$/, '.jpeg') : l_post.img_path)
-		site_image              = %{<div class="news_img"><span class="site_img"><img title="#{l_post.site_name}--inruby.com" src="/assets/news1/#{img_path}"/></span><span class="site_name">#{l_post.site_name}</span></div>}
-		c_post.body             = l_post.content.sub(/(:|：|。)\n/, "。\n#{site_image}\n")
-
+		#site_image              = %{<div class="news_img"><span class="site_img"><img title="#{l_post.site_name}--inruby.com" src="/assets/news1/#{img_path}"/></span><span class="site_name">#{l_post.site_name}</span></div>}
+		#c_post.body             = l_post.content.sub(/(:|：|。)\n/, "。\n#{site_image}\n")
+		c_post.body             = l_post.content
 		#c_post.body  = l_post.respond_to?(:content) ? l_post.content : %{<div class='best_answer'><span class='d_t'>回答：</span>#{l_post.best_answer.to_s.gsub(/\n{2,}/, '<br>').gsub(/\n/, '<br>')}</div>\n#{l_post.formated_all_answer.to_s.gsub(/<div id='answer(\d+)' class='answer_d'>/, '<div id="answer\1" class="answer_d"><span class="d_t">\1</span>')}}
 		#c_post.summary = l_post.respond_to?(:question) ? l_post.question.to_s.gsub(/\n{2,}/, '<br>').gsub(/\n/, '<br>') : nil
 		c_post.save!
