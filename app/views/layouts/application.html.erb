@@ -24,11 +24,16 @@
     <div class="container">
       <div class="wrapper">
         <div class="aside">
-           <%=render :partial => "layouts/aside" %>
+          <% unless is_mobile_agent? %>
+            <%=render :partial => "layouts/aside" %>
+          <% end %>
            <%= yield :aside %>
         </div>
         <div class="mainContent">
           <%=yield %>
+          <% if is_mobile_agent? %>
+           <%=render :partial => "layouts/aside" %>
+          <% end %>
         </div>
       </div>
     </div>

@@ -1,9 +1,11 @@
-<!-- footer -->
-<div id="footer">
-  <div class="container">
-    红宝石网版权所有 <br/>
-    <a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP备11016427号</a><br/>
-    &copy;2012-2015 <br/>
-    <%=image_tag 'ico-1.gif' %>
+<% unless is_mobile_agent? %>
+  <!-- footer -->
+  <div id="footer">
+    <div class="container">
+      红宝石网版权所有 <br/>
+      <a href="http://www.miibeian.gov.cn/" target="_blank">蜀ICP备11016427号</a><br/>
+      &copy;2012-2015 <br/>
+      <%=image_tag 'ico-1.gif' %>
+    </div>
   </div>
-</div>
+<% end %>

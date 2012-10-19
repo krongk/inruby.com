@@ -58,7 +58,7 @@ class Migrator
 		
 		#site_image              = %{<div class="news_img"><span class="site_img"><img title="#{l_post.site_name}--inruby.com" src="/assets/news1/#{img_path}"/></span><span class="site_name">#{l_post.site_name}</span></div>}
 		#c_post.body             = l_post.content.sub(/(:|：|。)\n/, "。\n#{site_image}\n")
-		c_post.body             = l_post.content
+		c_post.body             = l_post.content.sub(/\n([一二三四五六七八九十]、.*)\n/, '<h3>\1</h3>')
 		#c_post.body  = l_post.respond_to?(:content) ? l_post.content : %{<div class='best_answer'><span class='d_t'>回答：</span>#{l_post.best_answer.to_s.gsub(/\n{2,}/, '<br>').gsub(/\n/, '<br>')}</div>\n#{l_post.formated_all_answer.to_s.gsub(/<div id='answer(\d+)' class='answer_d'>/, '<div id="answer\1" class="answer_d"><span class="d_t">\1</span>')}}
 		#c_post.summary = l_post.respond_to?(:question) ? l_post.question.to_s.gsub(/\n{2,}/, '<br>').gsub(/\n/, '<br>') : nil
 		c_post.save!
