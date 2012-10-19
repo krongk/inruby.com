@@ -51,6 +51,7 @@ class Migrator
 		c_post.en_title         = Pinyin.t(l_post.title)
 		img_path = '/assets/news1/' + (l_post.img_path =~ /[0-9]jpeg$/ ? l_post.img_path.gsub(/jpeg$/, '.jpeg') : l_post.img_path)
 		c_post.image_path       = img_path
+		c_post.image_url  			= l_post.img_url
 		c_post.tags             = l_post.tags
 		c_post.summary          = l_post.summary
 		c_post.meta_keywords    = "#{l_post.title} -- www.inruby.com(#{l_post.tags}, 成都，ruby, ruby on rails, 网站建设，软件开发，数据采集)"
