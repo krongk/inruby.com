@@ -29,7 +29,7 @@ RailsOnWeb::Application.routes.draw do
 
   get "home/index"
   match "about" => "pages#show", :id => 'about'
-  match "sitemap" => "pages#show", :id => 'sitemap'
+  match "sitemap" => "home#sitemap"
   match "contact" => "contacts#new"
   
   match "form" => "home#form"

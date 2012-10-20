@@ -39,6 +39,25 @@ class HomeController < ApplicationController
     options = {:source => t.to_sym, :key_word => CGI.escape(@ic2.iconv(q)), :page => @page}
     # result = {:record_arr => [], :ext_key_arr => [], :source => 'web'}
     @result = Forager.get_result(options)
-  
+  end
+
+  def sitemap
+    static_urls = [ 
+      {:type => 'static', :title => '联系我们', :url => '/contact',      :updated_at => Time.now},
+      {:type => 'static', :title     => '关于我们', :url       => '/about',       :updated_at => Time.now},
+      {:type => 'static', :title     => '搜索', :url       => '/search',      :updated_at => Time.now} ] 
+    @pages_to_visit = static_urls
+    @pages_to_visit += Page.all.collect{|a| {:type => 'page', :title => a.title, :url => page_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
+    @pages_to_visit += NewsCate.all.collect{|a| {:type => 'news_cate', :title => a.name, :url => news_cate_path(a) ,  :updated_at => I18n.l(Time.now, :format => :w3c)} }
+    @pages_to_visit += NewsItem.all.collect{|a| {:type => 'news_item', :title => a.title, :url => news_item_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
+    @pages_to_visit += ProductCate.all.collect{|a| {:type => 'product_cate', :title => a.name, :url => product_cate_path(a) ,  :updated_at => I18n.l(Time.now, :format => :w3c)} }
+    @pages_to_visit += ProductItem.all.collect{|a| {:type => 'product_item', :title => a.title, :url => product_item_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
+    @pages_to_visit += ProjectCate.all.collect{|a| {:type => 'project_cate', :title => a.name, :url => project_cate_path(a) ,  :updated_at => I18n.l(Time.now, :format => :w3c)} }
+    @pages_to_visit += ProjectItem.all.collect{|a| {:type => 'project_item', :title => a.title, :url => project_item_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
+
+    respond_to do |format|
+      format.xml
+      format.html
+    end
   end
 end

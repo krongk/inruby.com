@@ -1,0 +1,9 @@
+<% @pages_to_visit.group_by{|a| a[:type]}.each do |group| %>
+  <div class="split_line">&nbsp;</div>
+  <ul>
+  <% group[1].each_with_index do |page, index| %>
+    <%= nice_tag_li({:url => page[:url], :title => page[:title]}) %>
+    <% break if index > 10 %>
+  <% end %>
+  </ul>
+<% end %>

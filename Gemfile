@@ -49,3 +49,6 @@ gem 'nokogiri'
 
 #===
 gem 'chinese_pinyin'
+
+#https://github.com/kjvarga/sitemap_generator
+gem 'sitemap_generator'
