@@ -49,11 +49,11 @@ class HomeController < ApplicationController
     @pages_to_visit = static_urls
     @pages_to_visit += Page.all.collect{|a| {:type => 'page', :title => a.title, :url => page_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
     @pages_to_visit += NewsCate.all.collect{|a| {:type => 'news_cate', :title => a.name, :url => news_cate_path(a) ,  :updated_at => I18n.l(Time.now, :format => :w3c)} }
-    @pages_to_visit += NewsItem.all.collect{|a| {:type => 'news_item', :title => a.title, :url => news_item_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
+    @pages_to_visit += NewsItem.limit(20).collect{|a| {:type => 'news_item', :title => a.title, :url => news_item_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
     @pages_to_visit += ProductCate.all.collect{|a| {:type => 'product_cate', :title => a.name, :url => product_cate_path(a) ,  :updated_at => I18n.l(Time.now, :format => :w3c)} }
-    @pages_to_visit += ProductItem.all.collect{|a| {:type => 'product_item', :title => a.title, :url => product_item_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
+    @pages_to_visit += ProductItem.limit(20).collect{|a| {:type => 'product_item', :title => a.title, :url => product_item_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
     @pages_to_visit += ProjectCate.all.collect{|a| {:type => 'project_cate', :title => a.name, :url => project_cate_path(a) ,  :updated_at => I18n.l(Time.now, :format => :w3c)} }
-    @pages_to_visit += ProjectItem.all.collect{|a| {:type => 'project_item', :title => a.title, :url => project_item_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
+    @pages_to_visit += ProjectItem.limit(20).collect{|a| {:type => 'project_item', :title => a.title, :url => project_item_path(a) ,  :updated_at => I18n.l(a.updated_at || Time.now, :format => :w3c)} }
 
     respond_to do |format|
       format.xml

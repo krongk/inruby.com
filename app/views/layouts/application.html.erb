@@ -13,6 +13,17 @@
   <%= stylesheet_link_tag    "application" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      // $("#top_banner_flip").mouseover(function(){
+      //   $("#top_banner").slideToggle("slow");
+      // });
+
+      //slide show 
+      $('#slideshow1').sliders({ delay: 4500, speed: 800 });
+      // $('#slideshow2').sliders({ delay: 4500, speed: 500,ease: 'swing' });
+    });
+  </script>
   <!--[if lt IE 7]>
     <link href="/assets/ie_style.css" rel="stylesheet" type="text/css" />
   <![endif]-->
@@ -38,6 +49,6 @@
       </div>
     </div>
   </div>
- <%=render :partial => "layouts/footer" %>
+  <%=render :partial => "layouts/footer" %>
 </body>
 </html>

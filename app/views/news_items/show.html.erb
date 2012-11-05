@@ -4,8 +4,6 @@
 
 
 <div class="news_main">
-  <div style="margin:4px;">首页 > <a href="/news_cates">互联网观察</a> > <%=link_to @news_item.news_cate.name, news_cate_path(@news_item.news_cate_id)%></div>
-
   <div class="titlerb">
     <h1><%= @news_item.title %></h1>
   </div>
@@ -22,24 +20,25 @@
       </div>
     <% end %>
     <% unless @news_item.image_path.blank? && @news_item.image_url.blank?%>
-      <% site_image              = %{[<div class="news_img"><span class="site_img"><img title="#{@news_item.title}--inruby.com" src="#{@news_item.image_url.nil? ? @news_item.image_path : @news_item.image_url}"/></span></div>]} 
+      <% site_image              = %{<div class="news_img"><span class="site_img"><img title="#{@news_item.title}--inruby.com" src="#{@news_item.image_url.nil? ? @news_item.image_path : @news_item.image_url}"/></span></div>} 
       @news_item.body = @news_item.body.to_s.sub(/(:|：|。)\n/, "。\n#{site_image}\n")
       %>
     <% end %>
     &nbsp;&nbsp;&nbsp;&nbsp;<%= simple_format @news_item.body.to_s.gsub(/^<br\/>|<p>/, '').html_safe unless @news_item.body.blank?%>
     <div class="bshare">
-      <div class="bshare-custom"><a title="分享到QQ空间" class="bshare-qzone" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren" href="javascript:void(0);"></a><a title="分享到腾讯微博" class="bshare-qqmb" href="javascript:void(0);"></a><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=14aef883-fe5e-4c43-b8f6-cbf83629892b&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
+      <div class="bshare-custom">将该文分享到：<a title="分享到QQ空间" class="bshare-qzone" href="javascript:void(0);"></a><a title="分享到新浪微博" class="bshare-sinaminiblog" href="javascript:void(0);"></a><a title="分享到人人网" class="bshare-renren" href="javascript:void(0);"></a><a title="分享到腾讯微博" class="bshare-qqmb" href="javascript:void(0);"></a><a title="分享到豆瓣" class="bshare-douban" href="javascript:void(0);"></a><a title="更多平台" class="bshare-more bshare-more-icon more-style-addthis"></a><span class="BSHARE_COUNT bshare-share-count">0</span></div><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/button.js#style=-1&amp;uuid=14aef883-fe5e-4c43-b8f6-cbf83629892b&amp;pophcol=2&amp;lang=zh"></script><script type="text/javascript" charset="utf-8" src="http://static.bshare.cn/b/bshareC0.js"></script>
     </div>
 
     <!--相关新闻-->
     <hr/>
     <div class="related">
-     <h3>相关信息推荐</h3>
      <ul>
        <% NewsItem.recent_related(@news_item.id).each do |item|%>
          <li><%= link_to item.title, news_item_path(item.id)%></li>
        <% end %>
      </ul>
     </div>
+
+    <%= link_to image_tag(asset_path("read_more.gif")), news_cate_path(@news_item.news_cate) %>
   </div>
 </div>

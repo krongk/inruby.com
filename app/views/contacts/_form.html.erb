@@ -31,7 +31,7 @@
     <%= f.text_field :email %>
   </div>
   <div class="field">
-    <%= f.label :qq %><br />
+    <%= f.label :qq, "其他联系方式：" %><br />
     <%= f.text_field :qq %>
   </div>
 <!--   <div class="field">
@@ -41,14 +41,18 @@
   <div class="field">
     <%= f.label :address, "地址：" %><br />
     <%= f.text_field :address %>
-  </div>
+  </div>-->
   <div class="field">
     <%= f.label :title, "标题：" %><br />
     <%= f.text_field :title %>
-  </div> -->
+  </div> 
   <div class="field">
-    <%= f.label :message, "内容：" %><br />
-    <%= f.text_area :message, :cols => 80, :value => '请详细描述您的需求' %>
+    <%= f.label :message, "详细介绍：" %><br />
+    <%= f.text_area :message, :cols => 90, :rows => 6, :placeholder => '请详细描述您的需求' %>
+  </div>
+  <div class="field">
+    <%= f.label :note, "其它说明" %><br />
+    <%= f.text_area :note, :cols => 90, :rows => 6%>
   </div>
 <!--   <div class="field">
     <%= f.label :cate %><br />
@@ -70,6 +74,5 @@
     <%= f.label :is_deleted %><br />
     <%= f.check_box :is_deleted %>
   </div> -->
-   
-  <%= f.submit "   提  交    ", :class => "button" %>
+  <%= f.submit "   提  交    ", :class => "submit" %>
 <% end %>
