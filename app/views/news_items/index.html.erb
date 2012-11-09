@@ -7,12 +7,12 @@
     <ul>
     <% @news_items.each do |item| %>
       <li>
-      <h3 class="titbg" ><%=link_to item.title, news_item_path(item)%>
+      <h3 class="titbg" ><%=link_to item.title.to_s.truncate(30), news_item_path(item)%>
       <small>[<%=link_to item.news_cate.name, news_cate_path(item.news_cate), :target => "_blank"%>]</small></h3>
         <p><%=  strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(200)%>
         <strong><%=link_to '[阅读详情]↓', news_item_path(item), :target => "_blank"%></strong> <%=item.updated_at.strftime('%Y-%m-%d %H:%M:%S').to_s unless item.updated_at.blank? %></p>
       </li>
     <% end %>
     </ul>
-    <%= will_paginate @news_items, :next_label => "下一页", :prev_label => "上一页" %>
+    <div class="tags"><%= will_paginate @news_items, :next_label => "下一页", :prev_label => "上一页" %></div>
 </div>

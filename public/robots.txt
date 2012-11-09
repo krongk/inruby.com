@@ -6,4 +6,4 @@
 
 User-Agent: *
 Disallow:
-Sitemap: http://localhost:3000/sitemap_index.xml.gz
+Sitemap: http://www.inruby.com/sitemap_index.xml.gz

@@ -4,8 +4,8 @@ class ProductItemsController < InheritedResources::Base
 
   def index
   	@product_items = params[:tag] ?
-    ProductItem.where("tags regexp '#{params[:tag].strip}'").order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 6) :
-    ProductItem.order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 6)
+    ProductItem.where("tags regexp '#{params[:tag].strip}'").order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 8) :
+    ProductItem.order("updated_at DESC").paginate(:page => params[:page] || 1, :per_page => 8)
   end
 
   private

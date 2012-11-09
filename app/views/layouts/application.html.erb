@@ -27,6 +27,17 @@
   <!--[if lt IE 7]>
     <link href="/assets/ie_style.css" rel="stylesheet" type="text/css" />
   <![endif]-->
+
+  <%#
+   #highlight code lib: https://github.com/isagalaev/highlight.js
+   #download file from: http://softwaremaniacs.org/soft/highlight/en/download/
+   %>
+  <% if request['controller'] == 'news_items' %>
+    <link rel="stylesheet" href="/highlight.js/solarized_light.min.css">
+    <script src="/highlight.js/highlight.pack.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  <% end %>
+  <%#highlight code end %>
 </head> 
  
 <body id="page1">
