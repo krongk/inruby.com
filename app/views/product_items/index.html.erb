@@ -7,7 +7,7 @@
 
 <ul class="projects">
 <% @product_items.each do |item| %>
-    <li><%=link_to image_tag(item.image_path, :width => '140px'), product_item_path(item) %>
+    <li><%=link_to image_tag(item.image_path, :width => '140px', :height => '80px'), product_item_path(item) %>
         <h4><%= link_to item.title, product_item_path(item) %></h4>
         <%= truncate_content(item.description, 120) %>
     </li>

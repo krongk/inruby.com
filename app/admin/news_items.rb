@@ -39,12 +39,12 @@ ActiveAdmin.register NewsItem do
   sidebar :"帮助中心" do
     ul do
       li "图片排版"
-        div "居左： <img class ='img_left' src='..."
-        div "居右： <img class ='img_right' src='..."
+        div %{居左： <img class="img_left" src="../..}
+        div %{居左： <img class="img_right" src="../..}
       li "标题"
         div image_tag(asset_path('HN.jpg'), :width => '220px')
       li "连接文本"
-        div "<a title='inruby.com' target='_blank' src=''> </a>"
+        div %{<a title="inruby.com" target="_blank" href=""> </a>}
       li "嵌入代码"
         div "<pre><code></code></pre>"
         div "<pre><code class='ruby'> </code></pre>"

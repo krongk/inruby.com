@@ -7,15 +7,17 @@
 <% end %>
 
 <h3>最新项目展示</h3>
+<hr/>
 <div class="wrapper">
 <% ProductItem.recent(3).each_with_index do |item, index| %>
   <div class="col-<%=index + 1 %>">
     <div class="box1">
-      <p><%=image_tag item.image_path, :title => item.title, :width => '140px' %></p>
+      <p><%=image_tag item.image_path, :title => item.title, :width => '140px', :height => '80px' %></p>
       <h4><%= item.title.truncate(20) %></h4>
       <p class="p1"><%= truncate_content(item.description, 20) %></p>
       <div class="wrapper"><a href="<%=product_item_path(item)%>" class="link1"><em><b>阅读更多</b></em></a></div>
     </div>
   </div>
 <% end %>
+  <a href="/product_items"> <input type="submit" value="查看更多" class="submit fleft" /></a>
 </div>

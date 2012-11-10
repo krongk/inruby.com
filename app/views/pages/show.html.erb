@@ -5,7 +5,11 @@
 <div id="page">
   <%#= @page.body.html_safe unless @page.body.blank?%>
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <%= simple_format @page.body.to_s.gsub(/^<br\/>|<p>/, '').html_safe unless @page.body.blank?%>
+  <% if ["about", "service_more"].include?(@page.path_name) %> 
+    <%= @page.body.to_s.gsub(/^<br\/>|<p>/, '').html_safe unless @page.body.blank?%>
+  <% else %>
+    <%= simple_format @page.body.to_s.gsub(/^<br\/>|<p>/, '').html_safe unless @page.body.blank?%>
+  <% end %>
 </div>
 
 <%= render :partial => 'layouts/bshare' %>

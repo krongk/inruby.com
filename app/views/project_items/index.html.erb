@@ -15,7 +15,7 @@
   <ul>
     <% @project_items.each_with_index do |item, index| %>
       <li>
-        <h3 class="titbg" ><%=link_to item.title, project_item_path(item)%></h3>
+        <h3 class="titbg" ><span class="title_ico">&nbsp;</span><%=link_to item.title, project_item_path(item)%></h3>
         <p><%=  strip_tags(item.content).to_s.gsub(/[ ]+|\s+|\t+|\n+|&[#0-9a-z]+;/, '').truncate(200)%>
         <strong><%=link_to '[阅读详情]↓', project_item_path(item)%></strong> <%=item.updated_at.strftime('%Y-%m-%d %H:%M:%S').to_s unless item.updated_at.blank? %></p>
       </li>
