@@ -27,129 +27,30 @@
 
 /*************http://guides.rubyonrails.org/layouts_and_rendering.html*/
 .note{
-  -webkit-background-clip: border-box;
-  -webkit-background-origin: padding-box;
-  -webkit-background-size: auto;
-  -webkit-border-image: none;
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: #FFF9D8;
-  background-image: url(http://guides.rubyonrails.org/images/tab_note.gif) left top;
-  background-origin: padding-box;
-  background-size: auto;
-  border-bottom-color: #333;
-  border-bottom-style: none;
-  border-bottom-width: 0px;
-  border-left-color: #333;
-  border-left-style: none;
-  border-left-width: 0px;
-  border-right-color: #333;
-  border-right-style: none;
-  border-right-width: 0px;
-  border-top-color: #333;
-  border-top-style: none;
-  border-top-width: 0px;
-  color: #333;
+  background: #BBD9FA;
+  padding: 10px;
+  margin: 5px 0;
   display: block;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  height: 119px;
-  line-height: 21px;
-  margin-bottom: 21px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 3.5px;
-  outline-color: #333;
-  outline-style: none;
-  outline-width: 0px;
-  padding-bottom: 3.5px;
-  padding-left: 48px;
-  padding-right: 14px;
-  padding-top: 14px;
-  text-align: left;
 }
 .info{
-  -webkit-background-clip: border-box;
-  -webkit-background-origin: padding-box;
-  -webkit-background-size: auto;
-  -webkit-border-image: none;
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: #D5E9F6;
-  background-image: url(http://guides.rubyonrails.org/images/tab_info.gif) no-repeat;
-  background-origin: padding-box;
-  background-size: auto;
-  border-bottom-color: #333;
-  border-bottom-style: none;
-  border-bottom-width: 0px;
-  border-left-color: #333;
-  border-left-style: none;
-  border-left-width: 0px;
-  border-right-color: #333;
-  border-right-style: none;
-  border-right-width: 0px;
-  border-top-color: #333;
-  border-top-style: none;
-  border-top-width: 0px;
-  color: #333;
+  background: #F7F4BE;
+  padding: 10px;
+  margin: 5px 0;
   display: block;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  height: 77px;
-  line-height: 21px;
-  margin-bottom: 21px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 3.5px;
-  outline-color: #333;
-  outline-style: none;
-  outline-width: 0px;
-  padding-bottom: 3.5px;
-  padding-left: 48px;
-  padding-right: 14px;
-  padding-top: 14px;
-  text-align: left;
 }
 .code{
-  -webkit-background-clip: border-box;
-  -webkit-background-origin: padding-box;
-  -webkit-background-size: auto;
-  -webkit-border-image: none;
-  background-attachment: scroll;
-  background-clip: border-box;
-  background-color: #EEE;
-  background-image: url(http://guides.rubyonrails.org/images/tab_grey.gif);
-  background-origin: padding-box;
-  background-size: auto;
-  border-bottom-color: #333;
-  border-bottom-style: none;
-  border-bottom-width: 0px;
-  border-left-color: #333;
-  border-left-style: none;
-  border-left-width: 0px;
-  border-right-color: #333;
-  border-right-style: none;
-  border-right-width: 0px;
-  border-top-color: #333;
-  border-top-style: none;
-  border-top-width: 0px;
-  color: #333;
+  background: #FADFD9;
+  padding: 10px;
+  margin: 5px 0;
   display: block;
-  font-family: Helvetica, Arial, sans-serif;
-  font-size: 14px;
-  height: 45px;
-  line-height: 21px;
-  margin-bottom: 21px;
-  margin-left: 0px;
-  margin-right: 0px;
-  margin-top: 0px;
-  outline-color: #333;
-  outline-style: none;
-  outline-width: 0px;
-  padding-bottom: 7px;
-  padding-left: 48px;
-  padding-right: 14px;
-  padding-top: 3.5px;
-  text-align: left;
-  width: 568px;
 }
+
+/*************table*******/
+table { width: auto; border-collapse:collapse; margin-bottom: 0.5em; }
+table.full { width: 100%; }
+table.fixed { table-layout:fixed }
+
+th,td { padding: 0.5em; }
+thead th { background: #444; color: #fff }
+tbody th { background: #ccc; color: #333 }
+tbody th.sub { background: #ddd; color: #333 }

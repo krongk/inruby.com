@@ -24,7 +24,14 @@
       @news_item.body = @news_item.body.to_s.sub(/(:|：|。)\n/, "。\n#{site_image}\n")
       %>
     <% end %>
-    &nbsp;&nbsp;&nbsp;&nbsp;<%= simple_format @news_item.body.to_s.gsub(/^<br\/>|<p>/, '').html_safe unless @news_item.body.blank?%>
+
+    <%# Manually formated news %>
+    <% if !@news_item.body.blank? && @news_item.body =~ /<table |<div /i %>
+      <%= @news_item.body.to_s.gsub(/^<br\/>|<p>/, '').html_safe %>
+    <% else %>
+      <%= simple_format @news_item.body.to_s.gsub(/^<br\/>|<p>/, '') %>
+    <% end %>
+
     <%= render :partial => 'layouts/bshare' %>
 
     <!--相关新闻-->
