@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta http-equiv="Content-Language" content="ZH-cn" />
+  </head>
+  <body>
+    <h1>Inruby.com Contacter Message</h1>
+    <table width="600px">
+     <tr><td>Name: </td><td><%= @contact.name %></td></tr>
+     <tr><td>Phone: </td><td><%= @contact.phone %></td></tr>
+     <tr><td>QQ：</td><td><%= @contact.qq %></td></tr>
+     <tr><td>Email: </td><td><%= @contact.qq %></td></tr>
+     <tr><td>Company：</td><td><%= @contact.email %></td></tr>
+     <tr><td>Address：</td><td><%= @contact.address %></td></tr>
+     <tr><td>Title：</td><td><%= @contact.title %></td></tr>
+     <tr><td>Message: </td><td><%= @contact.message %></td></tr>
+     <tr><td>Note：</td><td><%= @contact.note%></td></tr>
+     <tr><td>Updated at: </td><td><%= @contact.created_at.to_s %></td></tr>
+    </table>
+  </body>
+</html>

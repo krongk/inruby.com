@@ -28,15 +28,18 @@ RailsOnWeb::Application.configure do
   # Expands the lines which load the assets
   config.assets.debug = true
 
-  #config.action_mailer.perform_deliveries = true
+  #send mailer
+  config.action_mailer.perform_deliveries = true
+  config.action_controller.perform_caching = false
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     :enable_starttls_auto => true,
     :address => "smtp.gmail.com",
     :port => 587,
-    :domain => "mydomain.com",
+    :domain => "inruby.com",
     :authentication => :login,
     :user_name => "kenrome",
     :password => "inruby.com"
   }
+
 end

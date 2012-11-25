@@ -11,8 +11,8 @@ class NewsItem < ActiveRecord::Base
   #if id = 5 return 1..10
   #if id = 7 return 2..12
   def self.recent_related(id)
-  	low = id > 5 ? id-5 : 1
+  	low = id > 5 ? id-4 : 1
   	height = id > 10 ? id + 5 : id + (10 - id)
-  	NewsItem.where("id in(#{(low..height).to_a.join(',')})")
+  	NewsItem.where("id in(#{(low..height).to_a.join(',')})").order("updated_at DESC")
   end
 end
