@@ -2,11 +2,17 @@
 <% meta_keywords ["联系我们", "企业信息化咨询，成都红宝石信息技术"].join(' - ') %>
 <% meta_description ["联系我们", "成都红宝石信息技术，我们只关注高品质信息服务！联系电话：15928661802"].join(' - ') %>
 
-  <% if page = Page.find_by_path_name('contact') %>
+  <% if params[:product] %>
+     <h4>提交您的项目需求说明</h4>
+  <% elsif page = Page.find_by_path_name('contact') %>
      <%=page.body.html_safe unless page.body.blank?%>
+     <h4>给我们留言</h4>
   <% end %>
 
-  <h3>提交留言</h3>
+  <% if flash[:notice] %>
+    <div class="note"><%= flash[:notice] %></div>
+  <% end %>
+  
   <div class="wrapper">
     <%=render 'form' %>
   </div>
