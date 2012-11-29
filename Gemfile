@@ -22,7 +22,7 @@ gem 'htmlentities'
 
 #==Forager
  gem 'mechanize', '2.0.1'
- gem 'hpricot', '0.8.4'
+ gem 'hpricot', '0.8.6'
 
 #==I18n
 gem 'rails-i18n', '0.1.8'

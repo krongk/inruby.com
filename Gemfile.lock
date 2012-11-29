@@ -66,7 +66,7 @@ GEM
     geo_location (0.4.2)
     has_scope (0.5.1)
     hike (1.2.1)
-    hpricot (0.8.4)
+    hpricot (0.8.6)
     htmlentities (4.3.0)
     i18n (0.6.0)
     i18n_yaml_generator (0.0.1)
@@ -172,7 +172,7 @@ DEPENDENCIES
   coffee-rails (~> 3.1.1)
   devise (= 1.5.0)
   geo_location
-  hpricot (= 0.8.4)
+  hpricot (= 0.8.6)
   htmlentities
   i18n_yaml_generator (= 0.0.1)
   jquery-rails (= 1.0.14)
