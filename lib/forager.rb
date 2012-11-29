@@ -1,5 +1,5 @@
 $:.unshift(File.dirname(__FILE__))
-require 'baidu_web/lib/baidu_web'
+require 'baidu_web'
 # require 'baidu_top/lib/baidu_top'
 # require 'qihoo_wenda/lib/qihoo_wenda'
 

@@ -1,9 +1,23 @@
 #encoding: utf-8
+require 'iconv'
 load 'forager.rb'
 
 class HomeController < ApplicationController
   def index
   	#redirect_to :action => :site_map
+  end
+
+  def baidu_key
+    @key_words = BaiduKeyWord.paginate(:page => params[:page] || 1)
+  end
+
+  def baidu_content
+    @key_word = params[:key]
+    if @key_word.blank?
+      @baidu_contents = BaiduContent.paginate(:page => params[:page] || 1)
+    else
+      @baidu_contents = BaiduContent.where(:key_word_id => @key_word).paginate(:page => params[:page] || 1)
+    end
   end
 
   #It's a location tip, you can set lawyer => nil, and modify 'views/home/location.html.erb' to 'view/home/_location.html.erb'
@@ -36,7 +50,8 @@ class HomeController < ApplicationController
     @page = params[:page].to_i || 1
     @page = (1..100).include?(@page) ? @page : 1
 
-    options = {:source => t.to_sym, :key_word => CGI.escape(@ic2.iconv(q)), :page => @page}
+    #options = {:source => t.to_sym, :key_word => CGI.escape(@ic2.iconv(q)), :page => @page}
+    options = {:source => t.to_sym, :key_word => q, :page => @page}
     # result = {:record_arr => [], :ext_key_arr => [], :source => 'web'}
     @result = Forager.get_result(options)
   end
