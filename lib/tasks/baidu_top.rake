@@ -20,6 +20,7 @@ namespace :baidu_top do
         puts link.display
         title = link.display.to_s.force_encoding("utf-8")
         puts title
+        puts title.encoding
         @ic2 = Iconv.new('gb2312//IGNORE', 'UTF-8//IGNORE')
         puts @ic2.iconv(title)
         puts title.blank?
