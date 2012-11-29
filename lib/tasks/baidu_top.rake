@@ -6,48 +6,38 @@
 # require 'mechanize'
 # require 'hpricot'
 # require 'chinese_pinyin'
-
+require 'open-uri'
 namespace :baidu_top do
 
   desc "crawl baidu.com top key words and store on baidu.key_words, forage key words result"
   task :forager => :environment do
     puts 'crawl key words'
-    
-    agent = Mechanize.new
-    page = agent.get("http://i.top.baidu.com/buzz?b=1")
-    page.links.each do |link|
-      if link.href =~ /\/detail\?b=\d+&w=/
-        puts link.display
-        title = link.display.to_s.force_encoding("utf-8")
-        puts title
-        puts title.encoding
-        puts title.blank?
 
-        next if title.blank?
-        k = BaiduKeyWord.find_or_create_by_name(title)
-        k.en_name = link.href
+    url = "http://i.top.baidu.com/buzz?b=1"
+    html = open(url).read
+    html.force_encoding("gbk")
+    html.encode!("utf-8")
+    #File.open(File.join(File.dirname(__FILE__), 'baidu_top_result0.html'), "w"){|f| f.write(html)}
+
+    doc = Hpricot(html)
+    table = doc.at("//table.list-table")
+    raise "conflict table list" if table.nil?
+
+    table.search("//a.list-title").each do |item|
+      @ic2 = Iconv.new('gb2312//IGNORE', 'UTF-8//IGNORE')
+      #title = @ic2.iconv(item.innerHTML)
+      #title = item.inner_text.force_encoding("gb2312").encode("utf-8", replace: nil)
+      #inner_text will occur an error on windows pc.
+      title = item.innerHTML.encode("UTF-8", replace: nil)
+      title = title.force_encoding("UTF-8")
+      k = BaiduKeyWord.find_or_create_by_name(title)
+      if k.en_name.blank?
+        k.en_name = Pinyin.t(title)
         k.save!
       end
+      puts title
     end
-    # doc = Hpricot(page.body)
-    # table = doc.at("//table.list-table")
-    # raise "conflict table list" if table.nil?
-
-    # table.search("//a.list-title").each do |item|
-    #   @ic2 = Iconv.new('gb2312//IGNORE', 'UTF-8//IGNORE')
-    #   #title = @ic2.iconv(item.innerHTML)
-    #   #title = item.inner_text.force_encoding("gb2312").encode("utf-8", replace: nil)
-    #   #inner_text will occur an error on windows pc.
-    #   title = item.innerHTML.encode("UTF-8", replace: nil)
-    #   title = title.force_encoding("UTF-8")
-    #   k = BaiduKeyWord.find_or_create_by_name(title)
-    #   if k.en_name.blank?
-    #     k.en_name = Pinyin.t(title)
-    #     k.save!
-    #   end
-    #   puts title
-    # end
-    # puts 'done'
+    puts 'done'
   end
 
 end
