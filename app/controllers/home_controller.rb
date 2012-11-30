@@ -20,6 +20,7 @@ class HomeController < ApplicationController
 
       #test
       #system "rake baidu_top:forager"
+      puts "start async"
       BaiduTopWork.perform_async
       
       flash[:notice] = "请输入搜索关键词！"

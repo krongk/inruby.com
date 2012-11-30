@@ -13,4 +13,39 @@ make[1]: Leaving directory `/root/redis-2.6.6/src'
 
 	$ ./redis-server
 
+[root@west13178 src]# ./redis-server
+[2140] 30 Nov 20:42:24.391 # Warning: no config file specified, using the default config. In order to specif                                y a config file use ./redis-server /path/to/redis.conf
+[2140] 30 Nov 20:42:24.394 * Max number of open files set to 10032
+[2140] 30 Nov 20:42:24.394 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemo                                ry limit with 'noeviction' policy now.
+                _._
+           _.-``__ ''-._
+      _.-``    `.  `_.  ''-._           Redis 2.6.6 (00000000/0) 32 bit
+  .-`` .-```.  ```\/    _.,_ ''-._
+ (    '      ,       .-`  | `,    )     Running in stand alone mode
+ |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
+ |    `-._   `._    /     _.-'    |     PID: 2140
+  `-._    `-._  `-./  _.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |           http://redis.io
+  `-._    `-._`-.__.-'_.-'    _.-'
+ |`-._`-._    `-.__.-'    _.-'_.-'|
+ |    `-._`-._        _.-'_.-'    |
+  `-._    `-._`-.__.-'_.-'    _.-'
+      `-._    `-.__.-'    _.-'
+          `-._        _.-'
+              `-.__.-'
+
+[2140] 30 Nov 20:42:24.395 # Server started, Redis version 2.6.6
+[2140] 30 Nov 20:42:24.395 # WARNING overcommit_memory is set to 0! Background save may fail under low memor                                y condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the                                 command 'sysctl vm.overcommit_memory=1' for this to take effect.
+[2140] 30 Nov 20:42:24.395 * The server is now ready to accept connections on port 6379
+
+
+Installing facter (1.6.15)
+Installing timers (1.0.1)
+Installing celluloid (0.12.3)
+Installing redis (3.0.2)
+Installing redis-namespace (1.2.1)
+Using sass-rails (3.1.5)
+Installing sidekiq (2.5.4)
+Installing connection_pool (0.9.2)
 
