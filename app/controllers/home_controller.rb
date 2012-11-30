@@ -7,19 +7,6 @@ class HomeController < ApplicationController
   	#redirect_to :action => :site_map
   end
 
-  def baidu_key
-    @key_words = BaiduKeyWord.paginate(:page => params[:page] || 1)
-  end
-
-  def baidu_content
-    @key_word = params[:key]
-    if @key_word.blank?
-      @baidu_contents = BaiduContent.paginate(:page => params[:page] || 1)
-    else
-      @baidu_contents = BaiduContent.where(:key_word_id => @key_word).paginate(:page => params[:page] || 1)
-    end
-  end
-
   #It's a location tip, you can set lawyer => nil, and modify 'views/home/location.html.erb' to 'view/home/_location.html.erb'
   def location
   	#@ip = request.remote_id
@@ -30,6 +17,10 @@ class HomeController < ApplicationController
   #syixia engine
   def search
     if params[:q].blank?
+
+      #test
+      system "rake baidu_top:forager"
+      
       flash[:notice] = "请输入搜索关键词！"
       render 'form', :layout => false
       return

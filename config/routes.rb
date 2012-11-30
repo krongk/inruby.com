@@ -34,9 +34,7 @@ RailsOnWeb::Application.routes.draw do
   
   match "form" => "home#form"
   match "search" => "home#search"
-  match "baidu_key" => "home#baidu_key"
-  match "baidu_content" => "home#baidu_content"
-  
+
   match "upload" => "resource_items#upload"
   ActiveAdmin.routes(self)
 

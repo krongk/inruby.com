@@ -24,21 +24,20 @@ LocalBase.establish_connection({
 LocalBase.connection.execute("set names 'utf8'")
 
 class Company < LocalBase
-  self.table_name = 'company_06'
+  self.table_name = 'company_01'
 end
 
 
 class TestSms
 
   def run
-    puts "-----------------------"
     puts "total sms acount:"
     puts SmsBao.query('inruby', 'kenrome001')
     puts "total reocrds: " + Company.count.to_s
     puts "starting........"
     Company.where(:is_sms_processed => 'n').each_with_index do |item, index|
       flag = 'y'
-      content = "成都红宝石信息网(www.inruby.com)提供专业企业信息化,网站建设,网络推广,企业品牌设计,演示文稿,软文写作推广,微博营销,淘宝开店."
+      content = "成都红宝石信息网(www.inruby.com)提供专业企业信息化,网站建设,网络推广,企业品牌设计,演示文稿,软文写作推广,微博营销."
       phone = item.mobile_phone.to_s.strip
       #phone = '15928661802'
       if phone =~ /^1\d{10}$/
@@ -51,7 +50,7 @@ class TestSms
       item.sms_content = content
       item.save!
       puts "#{phone.ljust(11, ' ')}: #{flag}"
-      break if index > 1000
+      break if index > 500
     end
     puts "remain sms acount:"
     puts SmsBao.query('inruby', 'kenrome001')
