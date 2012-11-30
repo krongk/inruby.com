@@ -32,7 +32,6 @@ namespace :baidu_top do
         k.en_name = Pinyin.t(title)
         k.save!
       end
-      puts title
     end
   end
 
@@ -80,8 +79,6 @@ namespace :baidu_top do
       key.is_processed = flag
       key.processed_at = Time.now
       key.save!
-      
-      puts key.name
       break if index > 500
     end
   end
