@@ -53,5 +53,8 @@ gem 'chinese_pinyin'
 #https://github.com/kjvarga/sitemap_generator
 gem 'sitemap_generator'
 
-#
-gem 'baidu_web', '0.2.5'
+#baidu meta searching
+gem 'baidu_web'
+
+#for background job
+gem 'sidekiq'

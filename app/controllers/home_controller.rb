@@ -19,7 +19,8 @@ class HomeController < ApplicationController
     if params[:q].blank?
 
       #test
-      system "rake baidu_top:forager"
+      #system "rake baidu_top:forager"
+      BaiduTopWork.perform_async
       
       flash[:notice] = "请输入搜索关键词！"
       render 'form', :layout => false

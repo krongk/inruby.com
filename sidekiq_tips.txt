@@ -1,0 +1,16 @@
+Redis用法
+http://redis.io/download
+在Linux中安装Redis命令
+
+	$ wget http://redis.googlecode.com/files/redis-2.6.6.tar.gz
+	$ tar xzf redis-2.6.6.tar.gz
+	$ cd redis-2.6.6
+	$ make 
+安装完后提示：
+make[1]: Leaving directory `/root/redis-2.6.6/src'
+
+那么cd到/root/redis-2.6.6/src然后运行一下将启动服务
+
+	$ ./redis-server
+
+
