@@ -2,9 +2,12 @@ class BaiduTopWorker
   include Sidekiq::Worker
 
   def perform
-  	puts 'backgroud job start'
-  	Site.creat(:name => "a#{rand}", :value => Time.now)
-  	system "rake baidu_top:forager"
-  	puts 'bj end'
+  	bt = BackgroundJob.find_or_create_by_name('baidu_top')
+  	#fetch baidu top onice a day
+  	if (Time.now - bt.updated_at > 400)
+  	  system "rake baidu_top:forager"
+  	  bt.frequance_count += 1
+  	  bt.save!
+  	end
   end
 end

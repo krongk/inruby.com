@@ -1,3 +1,4 @@
+###########################################################################
 Redis用法
 http://redis.io/download
 在Linux中安装Redis命令
@@ -9,43 +10,74 @@ http://redis.io/download
 安装完后提示：
 make[1]: Leaving directory `/root/redis-2.6.6/src'
 
-那么cd到/root/redis-2.6.6/src然后运行一下将启动服务
+cd到/root/redis-2.6.6/src然后运行一下将启动服务
 
 	$ ./redis-server
 
-[root@west13178 src]# ./redis-server
-[2140] 30 Nov 20:42:24.391 # Warning: no config file specified, using the default config. In order to specif                                y a config file use ./redis-server /path/to/redis.conf
-[2140] 30 Nov 20:42:24.394 * Max number of open files set to 10032
-[2140] 30 Nov 20:42:24.394 # Warning: 32 bit instance detected but no memory limit set. Setting 3 GB maxmemo                                ry limit with 'noeviction' policy now.
-                _._
-           _.-``__ ''-._
-      _.-``    `.  `_.  ''-._           Redis 2.6.6 (00000000/0) 32 bit
-  .-`` .-```.  ```\/    _.,_ ''-._
- (    '      ,       .-`  | `,    )     Running in stand alone mode
- |`-._`-...-` __...-.``-._|'` _.-'|     Port: 6379
- |    `-._   `._    /     _.-'    |     PID: 2140
-  `-._    `-._  `-./  _.-'    _.-'
- |`-._`-._    `-.__.-'    _.-'_.-'|
- |    `-._`-._        _.-'_.-'    |           http://redis.io
-  `-._    `-._`-.__.-'_.-'    _.-'
- |`-._`-._    `-.__.-'    _.-'_.-'|
- |    `-._`-._        _.-'_.-'    |
-  `-._    `-._`-.__.-'_.-'    _.-'
-      `-._    `-.__.-'    _.-'
-          `-._        _.-'
-              `-.__.-'
-
-[2140] 30 Nov 20:42:24.395 # Server started, Redis version 2.6.6
-[2140] 30 Nov 20:42:24.395 # WARNING overcommit_memory is set to 0! Background save may fail under low memor                                y condition. To fix this issue add 'vm.overcommit_memory = 1' to /etc/sysctl.conf and then reboot or run the                                 command 'sysctl vm.overcommit_memory=1' for this to take effect.
+得到成功提示：
 [2140] 30 Nov 20:42:24.395 * The server is now ready to accept connections on port 6379
 
+将Redis作为 Linux 服务随机启动
+　　vi /etc/rc.local
+	在文件中添加：
+	/root/redis-2.6.6/src/redis-server
 
-Installing facter (1.6.15)
-Installing timers (1.0.1)
-Installing celluloid (0.12.3)
-Installing redis (3.0.2)
-Installing redis-namespace (1.2.1)
-Using sass-rails (3.1.5)
-Installing sidekiq (2.5.4)
-Installing connection_pool (0.9.2)
+更多Redis工具：
 
+	redis-server：Redis服务器的daemon启动程序
+	redis-cli：Redis命令行操作工具。当然，你也可以用telnet根据其纯文本协议来操作
+	redis-benchmark：Redis性能测试工具，测试Redis在你的系统及你的配置下的读写性能
+	redis-stat：Redis状态检测工具，可以检测Redis当前状态参数及延迟状况 
+
+停止Redis服务命令：
+
+	src/redis-cli shutdown
+
+配置Redis:
+源码编译完成后，在redis-2.2.12目录下有一个redis.conf文件，
+这个文件即是Redis的配置文件，你可以自行修改配置文件里面的参数，用配置文件来启动Redis的方法如下:
+
+　　[root@localhost redis-2.2.12]# src/redis-server redis.conf
+
+
+###########################################################################
+Sidekiq在Rails中的用法
+
+1. 在Gemfile中引入sidekiq
+	
+	gem 'sidekiq'
+
+然后运行：bundle install
+会发现安装了以下几个相关gem:
+
+	Installing facter (1.6.15)
+	Installing timers (1.0.1)
+	Installing celluloid (0.12.3)
+	Installing redis (3.0.2)
+	Installing redis-namespace (1.2.1)
+	Installing sidekiq (2.5.4)
+	Installing connection_pool (0.9.2)
+
+2. 创建Worker: app/workers/baidu_top_worker.rb
+ 
+    class BaiduTopWorker
+	  include Sidekiq::Worker
+
+	  def perform
+	  	puts 'backgroud job start'
+	  	Site.creat(:name => "a#{rand}", :value => Time.now)
+	  	system "rake baidu_top:forager"
+	  	puts 'bj end'
+	  end
+	end
+
+3. 在Controller或者Model中，任何需要调用后台worker的地方加入一下代码：
+	
+	BaiduTopWorker.perform_async
+
+4. 一切都准备好了，最好启动sidekiq
+	在app跟目录运行：
+
+	bundle exec  sidekiq
+
+	  

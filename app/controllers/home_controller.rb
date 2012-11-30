@@ -5,6 +5,7 @@ load 'forager.rb'
 class HomeController < ApplicationController
   def index
   	#redirect_to :action => :site_map
+    BaiduTopWorker.perform_async
   end
 
   #It's a location tip, you can set lawyer => nil, and modify 'views/home/location.html.erb' to 'view/home/_location.html.erb'
@@ -17,12 +18,6 @@ class HomeController < ApplicationController
   #syixia engine
   def search
     if params[:q].blank?
-
-      #test
-      #system "rake baidu_top:forager"
-      puts "start async"
-      BaiduTopWork.perform_async
-      
       flash[:notice] = "请输入搜索关键词！"
       render 'form', :layout => false
       return
