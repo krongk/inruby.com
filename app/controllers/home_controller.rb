@@ -44,7 +44,7 @@ class HomeController < ApplicationController
     @result = BaiduWeb.search(options[:key_word], :per_page => 20, :page_index => options[:page])
     #store in database
     unless request.host_with_port == "localhost:3000"
-      BaiduMetaSearch.perform_async(q, get_search_result_body_html(result[:record_arr])) if @result[:record_arr].any?
+      BaiduMetaSearch.perform_async(q, get_search_result_body_html(@result[:record_arr])) if @result[:record_arr].any?
     end
   end
 
