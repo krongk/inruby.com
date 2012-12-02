@@ -1,7 +1,4 @@
 #encoding: utf-8
-require 'iconv'
-load 'forager.rb'
-
 class HomeController < ApplicationController
   include ApplicationHelper
   def index
@@ -25,13 +22,13 @@ class HomeController < ApplicationController
       render 'form'
       return
     end
-    @ic = Iconv.new('UTF-8//IGNORE', 'gb2312//IGNORE')
-    @ic2 = Iconv.new('gb2312//IGNORE', 'UTF-8//IGNORE')
-    @coder = HTMLEntities.new
+    # @ic = Iconv.new('UTF-8//IGNORE', 'gb2312//IGNORE')
+    # @ic2 = Iconv.new('gb2312//IGNORE', 'UTF-8//IGNORE')
+    # @coder = HTMLEntities.new
 
     #get key word
     q = params[:q]
-    q = q.squeeze(' ').strip unless q.blank?
+    #q = q.squeeze(' ').strip unless q.blank?
 
     #get search source <web, wenda>
     t = params[:t] || 'web'
@@ -44,9 +41,11 @@ class HomeController < ApplicationController
     #options = {:source => t.to_sym, :key_word => CGI.escape(@ic2.iconv(q)), :page => @page}
     options = {:source => t.to_sym, :key_word => q, :page => @page}
     # result = {:record_arr => [], :ext_key_arr => [], :source => 'web'}
-    @result = Forager.get_result(options)
+    @result = BaiduWeb.search(options[:key_word], :per_page => 20, :page_index => options[:page])
     #store in database
-    BaiduMetaSearch.perform_async(q)
+    unless request.host_with_port == "localhost:3000"
+      BaiduMetaSearch.perform_async(q, @result)
+    end
   end
 
   def sitemap

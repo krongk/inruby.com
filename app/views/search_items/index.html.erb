@@ -2,11 +2,12 @@
 <% meta_keywords [ "搜索列表",  "红宝石信息技术网，红宝石企业建站, 红宝石互联网开发团队"].join(',') %>
 <% meta_description ["搜索列表", "红宝石信息技术网多年互联网从业经验，团队为企业提供企业策划、网站建设、网络推广、公关软文、电子商务等一站式服务"].join(',') %>
 
-<h4>搜索列表</h4>
+<h4>实时搜索关键词列表</h4>
 
 <table boarder = '2'>
 <% @search_items.each do |search_item| %>
   <tr>
+    <td><b><em><%= search_item.id %>.</em></b></td>
     <td><%= link_to search_item.title, search_item %></td>
     <td><a class="no_underline" href="/search_items/<%=search_item.id%>"><%=raw truncate_content(search_item.body.to_s.gsub(/([:<>'";,a-zA-Z0-9\?&_ .\/\\=-]+)/, ''), 200) %></a></td>
   </tr>
