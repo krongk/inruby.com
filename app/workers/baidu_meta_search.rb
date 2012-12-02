@@ -2,9 +2,9 @@
 class BaiduMetaSearch
   include Sidekiq::Worker
 
-  def perform(q, result)
+  def perform(q, body)
     r = SearchItem.find_or_create_by_title(q)
-    r.body = get_search_result_body_html(result[:record_arr])
+    r.body = body
     r.save!
   end
 end
