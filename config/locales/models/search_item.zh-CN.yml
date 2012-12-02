@@ -1,0 +1,13 @@
+---
+zh-CN:
+  active_record:
+    models:
+      search_item: Search item
+    attributes:
+      search_item:
+        title: Title
+        body: Body
+    errors:
+      search_item: !!null 
+  helpers:
+    search_item: !!null 

@@ -3,9 +3,12 @@ require 'iconv'
 load 'forager.rb'
 
 class HomeController < ApplicationController
+  include ApplicationHelper
   def index
   	#redirect_to :action => :site_map
-    BaiduTopWorker.perform_async
+    unless request.host_with_port == "localhost:3000"
+      BaiduTopWorker.perform_async
+    end
   end
 
   #It's a location tip, you can set lawyer => nil, and modify 'views/home/location.html.erb' to 'view/home/_location.html.erb'
@@ -19,7 +22,7 @@ class HomeController < ApplicationController
   def search
     if params[:q].blank?
       flash[:notice] = "请输入搜索关键词！"
-      render 'form', :layout => false
+      render 'form'
       return
     end
     @ic = Iconv.new('UTF-8//IGNORE', 'gb2312//IGNORE')
@@ -42,6 +45,8 @@ class HomeController < ApplicationController
     options = {:source => t.to_sym, :key_word => q, :page => @page}
     # result = {:record_arr => [], :ext_key_arr => [], :source => 'web'}
     @result = Forager.get_result(options)
+    #store in database
+    BaiduMetaSearch.perform_async(q)
   end
 
   def sitemap

@@ -63,6 +63,21 @@ module ApplicationHelper
   def truncate_content(content, count)
     strip_tags(content).to_s.gsub(/[ ]+|\s+|\t+|\n+/, ' ').truncate(count)
   end
+
+  #get search result body html
+  def get_search_result_body_html(record_arr)
+    str_arr = []
+    record_arr.each_with_index do |r, index|
+      str_arr << %{<div class="search_item" id="search_item_#{index}">
+        <h3 class="titbg"><span class="title_ico">&nbsp;</span>
+        <a href="#{r.url}" target="_blank">#{r.title}</a>
+        </h3>
+        <a href="#{r.url}" target="_blank">#{r.url[0..79]}</a><br/>
+        #{(r.summary).html_safe}
+        </div>}
+    end
+    str_arr.join("\n")
+  end
   #flash动画显示
   # eg: play_flash("flash/top_banner.swf")
   # or: play_flash asset_path("flash/top_banner.swf"), :width => '985', :height => '249'

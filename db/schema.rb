@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121130135853) do
+ActiveRecord::Schema.define(:version => 20121202111103) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -48,7 +48,7 @@ ActiveRecord::Schema.define(:version => 20121130135853) do
 
   create_table "background_jobs", :force => true do |t|
     t.string   "name"
-    t.integer  "frequance_count"
+    t.integer  "frequance_count", :default => 0, :null => false
     t.string   "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -223,6 +223,13 @@ ActiveRecord::Schema.define(:version => 20121130135853) do
 
   add_index "resource_items", ["resource_cate_id"], :name => "index_resource_items_on_resource_cate_id"
   add_index "resource_items", ["resource_type"], :name => "index_resource_items_on_resource_type"
+
+  create_table "search_items", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "sites", :force => true do |t|
     t.string "name"

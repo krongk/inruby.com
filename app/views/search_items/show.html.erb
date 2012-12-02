@@ -1,0 +1,15 @@
+<% title [@search_item.title, "红宝石信息技术网，专业网站建设专家"].join(',') %>
+<% meta_keywords [ @search_item.title,  "红宝石信息技术网，红宝石企业建站, 红宝石互联网开发团队"].join(',') %>
+<% meta_description [ @search_item.title,"红宝石信息技术网多年互联网从业经验，团队为企业提供企业策划、网站建设、网络推广、公关软文、电子商务等一站式服务"].join(',') %>
+
+<p id="notice"><%= notice %></p>
+
+<div class="news_main">
+  <div class="titlerb">
+    <h1><%= @search_item.title %></h1>
+  </div>
+  <div class="news_content">
+    <%= @search_item.body.html_safe %>
+  </div>
+  <p><%= render :partial => 'layouts/bshare' %></p>
+</div>
