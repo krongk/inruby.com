@@ -1,0 +1,25 @@
+---
+zh-CN:
+  active_record:
+    models:
+      biz_agenter: Biz agenter
+    attributes:
+      biz_agenter:
+        is_mailed: Is mailed
+        is_called: Is called
+        is_sms_sent: Is sms sent
+        cate: Cate
+        bar_number: Bar number
+        name: Name
+        qq: Qq
+        email: Email
+        mobile_phone: Mobile phone
+        tel_phone: Tel phone
+        other_contact: Other contact
+        company: Company
+        description: Description
+        note: Note
+    errors:
+      biz_agenter: !!null 
+  helpers:
+    biz_agenter: !!null 

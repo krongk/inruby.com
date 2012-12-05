@@ -1,0 +1,49 @@
+<h1>Listing biz_agenters</h1>
+
+<table>
+  <tr>
+    <th>Is mailed</th>
+    <th>Is called</th>
+    <th>Is sms sent</th>
+    <th>Cate</th>
+    <th>Bar number</th>
+    <th>Name</th>
+    <th>Qq</th>
+    <th>Email</th>
+    <th>Mobile phone</th>
+    <th>Tel phone</th>
+    <th>Other contact</th>
+    <th>Company</th>
+    <th>Description</th>
+    <th>Note</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @biz_agenters.each do |biz_agenter| %>
+  <tr>
+    <td><%= biz_agenter.is_mailed %></td>
+    <td><%= biz_agenter.is_called %></td>
+    <td><%= biz_agenter.is_sms_sent %></td>
+    <td><%= biz_agenter.cate %></td>
+    <td><%= biz_agenter.bar_number %></td>
+    <td><%= biz_agenter.name %></td>
+    <td><%= biz_agenter.qq %></td>
+    <td><%= biz_agenter.email %></td>
+    <td><%= biz_agenter.mobile_phone %></td>
+    <td><%= biz_agenter.tel_phone %></td>
+    <td><%= biz_agenter.other_contact %></td>
+    <td><%= biz_agenter.company %></td>
+    <td><%= biz_agenter.description %></td>
+    <td><%= biz_agenter.note %></td>
+    <td><%= link_to 'Show', biz_agenter %></td>
+    <td><%= link_to 'Edit', edit_biz_agenter_path(biz_agenter) %></td>
+    <td><%= link_to 'Destroy', biz_agenter, confirm: 'Are you sure?', method: :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Biz agenter', new_biz_agenter_path %>

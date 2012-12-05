@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/Fixtures.html
+
+one:
+  is_mailed: MyString
+  is_called: MyString
+  is_sms_sent: MyString
+  cate: MyString
+  bar_number: MyString
+  name: MyString
+  qq: MyString
+  email: MyString
+  mobile_phone: MyString
+  tel_phone: MyString
+  other_contact: MyString
+  company: MyString
+  description: MyText
+  note: MyText
+
+two:
+  is_mailed: MyString
+  is_called: MyString
+  is_sms_sent: MyString
+  cate: MyString
+  bar_number: MyString
+  name: MyString
+  qq: MyString
+  email: MyString
+  mobile_phone: MyString
+  tel_phone: MyString
+  other_contact: MyString
+  company: MyString
+  description: MyText
+  note: MyText

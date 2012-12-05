@@ -1,5 +1,7 @@
 RailsOnWeb::Application.routes.draw do
 
+  resources :biz_agenters
+
   resources :search_items
 
   resources :project_items

@@ -67,4 +67,5 @@ class HomeController < ApplicationController
       format.html
     end
   end
+
 end

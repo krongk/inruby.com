@@ -1,0 +1,73 @@
+<%= form_for(@biz_agenter) do |f| %>
+  <% if @biz_agenter.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@biz_agenter.errors.count, "error") %> prohibited this biz_agenter from being saved:</h2>
+
+      <ul>
+      <% @biz_agenter.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :is_mailed %><br />
+    <%= f.text_field :is_mailed %>
+  </div>
+  <div class="field">
+    <%= f.label :is_called %><br />
+    <%= f.text_field :is_called %>
+  </div>
+  <div class="field">
+    <%= f.label :is_sms_sent %><br />
+    <%= f.text_field :is_sms_sent %>
+  </div>
+  <div class="field">
+    <%= f.label :cate %><br />
+    <%= f.text_field :cate %>
+  </div>
+  <div class="field">
+    <%= f.label :bar_number %><br />
+    <%= f.text_field :bar_number %>
+  </div>
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :qq %><br />
+    <%= f.text_field :qq %>
+  </div>
+  <div class="field">
+    <%= f.label :email %><br />
+    <%= f.text_field :email %>
+  </div>
+  <div class="field">
+    <%= f.label :mobile_phone %><br />
+    <%= f.text_field :mobile_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :tel_phone %><br />
+    <%= f.text_field :tel_phone %>
+  </div>
+  <div class="field">
+    <%= f.label :other_contact %><br />
+    <%= f.text_field :other_contact %>
+  </div>
+  <div class="field">
+    <%= f.label :company %><br />
+    <%= f.text_field :company %>
+  </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
+  <div class="field">
+    <%= f.label :note %><br />
+    <%= f.text_area :note %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121202111103) do
+ActiveRecord::Schema.define(:version => 20121205135244) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -46,6 +46,26 @@ ActiveRecord::Schema.define(:version => 20121202111103) do
   add_index "admin_users", ["email"], :name => "index_admin_users_on_email", :unique => true
   add_index "admin_users", ["reset_password_token"], :name => "index_admin_users_on_reset_password_token", :unique => true
 
+  create_table "agenter", :force => true do |t|
+    t.string   "name"
+    t.integer  "pa_number",          :limit => 8
+    t.string   "email"
+    t.string   "mobile_phone"
+    t.string   "tel_phone"
+    t.string   "bp_phone"
+    t.string   "company"
+    t.text     "description",        :limit => 2147483647
+    t.text     "ganyan",             :limit => 2147483647
+    t.text     "rongyu",             :limit => 2147483647
+    t.string   "ObjectKey",                                :null => false
+    t.string   "RobotName"
+    t.string   "ExecutionId",        :limit => 50
+    t.datetime "FirstExtracted"
+    t.datetime "LastExtracted"
+    t.string   "ExtractedInLastRun", :limit => 1
+    t.datetime "LastUpdated"
+  end
+
   create_table "background_jobs", :force => true do |t|
     t.string   "name"
     t.integer  "frequance_count", :default => 0, :null => false
@@ -55,6 +75,30 @@ ActiveRecord::Schema.define(:version => 20121202111103) do
   end
 
   add_index "background_jobs", ["name"], :name => "index_background_jobs_on_name", :unique => true
+
+  create_table "biz_agenters", :force => true do |t|
+    t.string   "is_mailed",     :default => "n"
+    t.string   "is_called",     :default => "n"
+    t.string   "is_sms_sent",   :default => "n"
+    t.string   "cate"
+    t.string   "bar_number"
+    t.string   "name"
+    t.string   "qq"
+    t.string   "email"
+    t.string   "mobile_phone"
+    t.string   "tel_phone"
+    t.string   "other_contact"
+    t.string   "company"
+    t.text     "description"
+    t.text     "note"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "biz_agenters", ["bar_number"], :name => "index_biz_agenters_on_bar_number"
+  add_index "biz_agenters", ["cate"], :name => "index_biz_agenters_on_cate"
+  add_index "biz_agenters", ["email"], :name => "index_biz_agenters_on_email", :unique => true
+  add_index "biz_agenters", ["mobile_phone"], :name => "index_biz_agenters_on_mobile_phone", :unique => true
 
   create_table "cities", :force => true do |t|
     t.string  "name"
