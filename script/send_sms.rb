@@ -24,7 +24,7 @@ LocalBase.establish_connection({
 LocalBase.connection.execute("set names 'utf8'")
 
 class Company < LocalBase
-  self.table_name = 'company_01'
+  self.table_name = 'insurance_phone'
 end
 
 
@@ -37,7 +37,7 @@ class TestSms
     puts "starting........"
     Company.where(:is_sms_processed => 'n').each_with_index do |item, index|
       flag = 'y'
-      content = "成都红宝石信息网(www.inruby.com)提供专业企业信息化,网站建设,网络推广,企业品牌设计,演示文稿,软文写作推广,微博营销."
+      content = "HR您好,如果您的招聘增员效果不理想的话,可以考虑一下我们提供的海量人才库,访问：http://www.inruby.com/resume/index.html"
       phone = item.mobile_phone.to_s.strip
       #phone = '15928661802'
       if phone =~ /^1\d{10}$/
