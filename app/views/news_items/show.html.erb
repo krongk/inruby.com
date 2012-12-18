@@ -18,10 +18,12 @@
            <%=link_to tag, "/news_cates/#{tag}" %>
         <% end %>
       </div>
+    <% else %>
+      <hr/>
     <% end %>
     <% unless @news_item.image_path.blank? && @news_item.image_url.blank?%>
       <% site_image              = %{<div class="news_img"><span class="site_img"><img title="#{@news_item.title}--inruby.com" src="#{@news_item.image_url.blank? ? @news_item.image_path : @news_item.image_url}"/></span></div>} 
-      @news_item.body = @news_item.body.to_s.sub(/(:|：|。|.|;)\n/, "。\n#{site_image}\n")
+      @news_item.body = @news_item.body.to_s.sub(/(:|：|。|.|;)\n/, "\n#{site_image}\n")
       %>
     <% end %>
     <%# Manually formated news %>

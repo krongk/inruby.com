@@ -9,7 +9,7 @@
   <tr>
     <td><b><em><%= search_item.id %>.</em></b></td>
     <td><%= link_to search_item.title, search_item %></td>
-    <td><a class="no_underline" href="/search_items/<%=search_item.id%>"><%=raw truncate_content(search_item.body.to_s.gsub(/([:<>'";,a-zA-Z0-9\?&_ .\/\\=-]+)/, ''), 200) %></a></td>
+    <td><a class="no_underline" href="/search_items/<%=search_item.id%>"><%=raw truncate_content(search_item.body.to_s.gsub(/([:<>'";,a-zA-Z0-9\?&_ .\/\\=-]+)/, ''), 120) %></a></td>
   </tr>
 <% end %>
 </table>

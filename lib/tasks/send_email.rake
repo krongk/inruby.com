@@ -15,8 +15,8 @@ namespace :send_email do
       	item.email = item.email.to_s.strip
       	if item.email !~ /^[\_a-z\d]+(\.[\_a-z\d]+)*@([\da-z](-[\da-z])?)+(\.[a-z]+)+$/i
       	  item.is_mailed = 'bad email'
-	      item.save!
-	      next
+	        item.save!
+	        next
       	end
 		mail_arr << item.email
 		if mail_arr.size > 10

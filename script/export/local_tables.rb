@@ -17,4 +17,8 @@ module ForagerLocal
 		set_table_name 'inruby_post'
 	end
 
+	class Post < LocalBase
+		set_table_name 'post'
+	end
+
 end

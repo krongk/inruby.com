@@ -9,14 +9,14 @@
     <% @news_items.each_with_index do |item, index| %>
       <li>
         <h3><span class="title_ico">&nbsp;</span><%=link_to item.title.to_s.truncate(30), news_item_path(item)%></h3>
-
-        <div class="summary">
           <% unless item.image_path.blank? && item.image_url.blank? %>
-            <% image_path = item.image_path.blank? ? item.image_url : item.image_path %>
-            <%= image_tag image_path, :class => 'img_left', :width => '100' %>
+            <div class="summary with_img">
+              <% image_path = item.image_path.blank? ? item.image_url : item.image_path %>
+              <%= image_tag image_path, :class => 'img_left', :height => '100' %>
+          <% else %>
+            <div class="summary">
           <% end %>
-
-          <%=  item.summary.blank? ? strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(200) : strip_tags(item.summary)%>
+          <%= item.summary.blank? ? strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(200) : strip_tags(item.summary)%>
         </div>
       </li>
     <% end %>

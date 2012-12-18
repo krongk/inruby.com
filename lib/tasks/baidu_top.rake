@@ -37,6 +37,13 @@ namespace :baidu_top do
 
   def forage_search_result
     BaiduKeyWord.where(:is_processed => 'n').each_with_index do |key, index|
+      if BaiduContent.where(:key_word_id => key.id).any?
+        key.is_processed = 'd'
+        key.processed_at = Time.now
+        key.save!
+        next
+      end
+
       flag = 'y'
       #options = {:source => t.to_sym, :key_word => CGI.escape(@ic2.iconv(q)), :page => @page}
       # result = {:record_arr => [], :ext_key_arr => [], :source => 'web'}

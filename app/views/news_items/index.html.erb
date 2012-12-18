@@ -6,11 +6,19 @@
     <h3 class="titlbg">互联网动态</h3>
     <ul>
     <% @news_items.each do |item| %>
-      <li>
-      <h3 class="titbg" ><%=link_to item.title.to_s.truncate(30), news_item_path(item)%>
-      <small>[<%=link_to item.news_cate.name, news_cate_path(item.news_cate), :target => "_blank"%>]</small></h3>
-        <p><%=  strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(200)%>
-        <strong><%=link_to '[阅读详情]↓', news_item_path(item), :target => "_blank"%></strong> <%=item.updated_at.strftime('%Y-%m-%d %H:%M:%S').to_s unless item.updated_at.blank? %></p>
+       <li>
+          <h3 class="titbg" ><%=link_to item.title.to_s.truncate(30), news_item_path(item)%>
+          <small>[<%=link_to item.news_cate.name, news_cate_path(item.news_cate), :target => "_blank"%>]</small></h3>
+          <% unless item.image_path.blank? && item.image_url.blank? %>
+            <div class="summary with_img">
+              <% image_path = item.image_path.blank? ? item.image_url : item.image_path %>
+              <%= image_tag image_path, :class => 'img_left', :height => '100' %>
+          <% else %>
+            <div class="summary">
+          <% end %>
+          <%= item.summary.blank? ? strip_tags(item.body).to_s.gsub(/[ ]+|\s+|\t+|\n+/, '').truncate(200) : strip_tags(item.summary)%>
+          <%=item.updated_at.strftime('%Y-%m-%d %H:%M:%S').to_s unless item.updated_at.blank? %>
+        </div>
       </li>
     <% end %>
     </ul>
