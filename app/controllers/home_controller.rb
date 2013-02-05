@@ -19,6 +19,11 @@ class HomeController < ApplicationController
 
   #syixia engine
   def search
+    #because of 十八大
+    redirect_to '/'
+    return
+
+
     if params[:q].blank?
       flash[:notice] = "请输入搜索关键词！"
       render 'form'
