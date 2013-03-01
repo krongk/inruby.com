@@ -1,5 +1,6 @@
 <%= form_for(@resource_item, :html => {:multipart => true, :class=> 'yform'}) do |f| %>
   <% if @resource_item.errors.any? %>
+  
     <div id="error_explanation">
       <h2><%= pluralize(@resource_item.errors.count, "error") %> prohibited this resource_item from being saved:</h2>
 
