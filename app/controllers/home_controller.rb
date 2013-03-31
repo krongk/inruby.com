@@ -1,7 +1,7 @@
 #encoding: utf-8
 class HomeController < ApplicationController
   include ApplicationHelper
-  cache_page :index, :sitemap
+  caches_page :index, :sitemap
   def index
   	#redirect_to :action => :site_map
 
