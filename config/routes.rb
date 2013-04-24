@@ -18,7 +18,9 @@ RailsOnWeb::Application.routes.draw do
 
   resources :resource_cates
 
+  #resources :product_items
   resources :product_items
+  match "product_items/page/:page", :to => "product_items#index", :via => :get
 
   resources :product_cates
 
@@ -35,7 +37,7 @@ RailsOnWeb::Application.routes.draw do
   match "news_cates/page/:page", :to => "news_cates#index", :via => :get
   match "pages/page/:page", :to => "pages#index", :via => :get
   match "product_cates/page/:page", :to => "product_cates#index", :via => :get
-  match "product_items/page/:page", :to => "product_items#index", :via => :get
+  
   match "project_cates/page/:page", :to => "project_cates#index", :via => :get
   match "project_items/page/:page", :to => "project_items#index", :via => :get
 

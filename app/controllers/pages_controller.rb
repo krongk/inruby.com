@@ -2,8 +2,8 @@
 class PagesController < ApplicationController
   before_filter :authenticate_admin_user!, :except => [:index, :show, :en]
   
-  caches_page :index, :show
-  before_filter(only: [:index, :show]) { @page_caching = true }
+  caches_page :show
+  caches_action :index, :cache_path => Proc.new { |c| c.params }
   cache_sweeper :page_sweeper
 
   # GET /pages

@@ -1,9 +1,9 @@
 class NewsItemsController < InheritedResources::Base
   before_filter :authenticate_admin_user!, :except => [:index, :show]
   before_filter :load_news_cate
-  
-  caches_page :index, :show
-  before_filter(only: [:index, :show]) { @page_caching = true }
+
+  caches_page :show
+  caches_page :index, :cache_path => Proc.new { |c| c.params }
   cache_sweeper :news_item_sweeper
 
   def index
