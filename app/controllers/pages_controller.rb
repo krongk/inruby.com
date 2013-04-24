@@ -1,7 +1,11 @@
 #encoding: utf-8
 class PagesController < ApplicationController
   before_filter :authenticate_admin_user!, :except => [:index, :show, :en]
+  
   caches_page :index, :show
+  before_filter(only: [:index, :show]) { @page_caching = true }
+  cache_sweeper :page_sweeper
+
   # GET /pages
   # GET /pages.json
   def index

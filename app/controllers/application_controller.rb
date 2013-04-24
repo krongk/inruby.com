@@ -4,6 +4,9 @@ class ApplicationController < ActionController::Base
   #before_filter :locate
   before_filter :init_site_global
   
+  # set per_page globally
+  WillPaginate.per_page = 10
+
   def locate
   	#ip = request.remote_id
   	ip = '118.113.226.34'
