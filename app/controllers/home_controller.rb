@@ -1,6 +1,7 @@
 #encoding: utf-8
 class HomeController < ApplicationController
   include ApplicationHelper
+  caches_page :index, :sitemap
   def index
   	#redirect_to :action => :site_map
 
@@ -20,7 +21,7 @@ class HomeController < ApplicationController
   #syixia engine
   def search
     #because of 十八大
-    redirect_to '/'
+    render :text => 'yes baby!'
     return
 
 
