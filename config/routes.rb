@@ -1,12 +1,14 @@
 RailsOnWeb::Application.routes.draw do
-
   resources :biz_agenters
 
   resources :search_items
 
-  resources :project_items
+  resources :project_items, :except => [:index]
+  match "project_items/(page/:page)", :to => "project_items#index", :via => :get
 
-  resources :project_cates
+  resources :project_cates, :except => [:index, :show]
+  match "project_cates/(page/:page)", :to => "project_cates#index", :via => :get
+  match "project_cates/:id/(page/:page)", :to => "project_cates#show", :via => :get
 
   resources :contacts
 
@@ -19,28 +21,27 @@ RailsOnWeb::Application.routes.draw do
   resources :resource_cates
 
   #resources :product_items
-  resources :product_items
-  match "product_items/page/:page", :to => "product_items#index", :via => :get
+  resources :product_items, :except => [:index]
+  match "product_items/(page/:page)" => "product_items#index"
 
-  resources :product_cates
+  resources :product_cates, :except => [:index, :show]
+  match "product_cates/(page/:page)", :to => "product_cates#index", :via => :get
+  match "product_cates/:id/(page/:page)", :to => "product_cates#show", :via => :get
 
-  resources :news_items
+  resources :news_items, :except => [:index]
+  match "news_items/(page/:page)", :to => "news_items#index", :via => :get
 
-  resources :news_cates
-
+  resources :news_cates, :except => [:index, :show]
+  match "news_cates/(page/:page)", :to => "news_cates#index", :via => :get
+  match "news_cates/:id/(page/:page)", :to => "news_cates#show", :via => :get
   #resources :page_parts
   #resources :parts
   #resources :sites
-  resources :pages
-
-  match "news_items/page/:page", :to => "news_items#index", :via => :get
-  match "news_cates/page/:page", :to => "news_cates#index", :via => :get
-  match "pages/page/:page", :to => "pages#index", :via => :get
-  match "product_cates/page/:page", :to => "product_cates#index", :via => :get
+  resources :pages, :except => [:index]
+  match "pages/(page/:page)", :to => "pages#index", :via => :get
   
-  match "project_cates/page/:page", :to => "project_cates#index", :via => :get
-  match "project_items/page/:page", :to => "project_items#index", :via => :get
 
+  
   get "home/index"
   match "about" => "pages#show", :id => 'about'
   match "sitemap" => "home#sitemap"

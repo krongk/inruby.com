@@ -21,8 +21,8 @@ class HomeController < ApplicationController
   #syixia engine
   def search
     #because of 十八大
-    render :text => 'yes baby!'
-    return
+    #render :text => 'yes baby!'
+    #return
 
 
     if params[:q].blank?
@@ -36,6 +36,7 @@ class HomeController < ApplicationController
 
     #get key word
     q = params[:q]
+    q = "site: inruby.com #{q}"
     #q = q.squeeze(' ').strip unless q.blank?
 
     #get search source <web, wenda>
