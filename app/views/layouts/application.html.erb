@@ -24,6 +24,9 @@
 </head> 
  
 <body id="page1">
+  <% if is_mobile_agent? %>
+   欢迎访问红宝石信息技术网！
+  <% end %>
   <%=render :partial => "layouts/header" %>
   <div id="content">
     <div class="container">
